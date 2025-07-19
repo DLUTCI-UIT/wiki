@@ -1,0 +1,1475 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://uit.kokomi.ltd/wiki/blog/tl_debug/">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
+    
+    
+      
+        <title>Debug Secret Script - UIT WIKI</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+  
+    <script defer src="https://analytics.kokomi.ltd/script.js" data-website-id="37c07a74-059a-4d0e-8e65-38be80be4756"></script>
+  
+
+  
+      
+    
+
+
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:300,300i,400,400i,700,700i%7CSource+Code+Pro:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans";--md-code-font:"Source Code Pro"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../static/stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="preference" data-md-color-primary="custom" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#debug-secret-script" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="UIT WIKI" class="md-header__button md-logo" aria-label="UIT WIKI" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path d="M17.029 18.772l.777 1.166-5.417 2.709L0 16.451V4.063l5.417-2.709 5.298 7.948 7.867-5.24L24 1.354V16.84l-5.417 2.709-1.554-.777zm2.023-13.827v13.253l3.949-1.975V2.97l-3.949 1.975zM5.076 2.642L1.458 4.45 12.73 21.358l3.618-1.809L5.076 2.642z" />
+</svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            UIT WIKI
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Debug Secret Script
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../.." class="md-tabs__link">
+          
+  
+  
+    
+  
+  简介
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../cprogramming/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  C语言速通
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../course/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  内部课程
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="UIT WIKI" class="md-nav__button md-logo" aria-label="UIT WIKI" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path d="M17.029 18.772l.777 1.166-5.417 2.709L0 16.451V4.063l5.417-2.709 5.298 7.948 7.867-5.24L24 1.354V16.84l-5.417 2.709-1.554-.777zm2.023-13.827v13.253l3.949-1.975V2.97l-3.949 1.975zM5.076 2.642L1.458 4.45 12.73 21.358l3.618-1.809L5.076 2.642z" />
+</svg>
+
+    </a>
+    UIT WIKI
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../.." class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    简介
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1" id="__nav_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            简介
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../copyright/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    版权声明
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../cprogramming/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    C语言速通
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            C语言速通
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cprogramming/01basic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    一、基础知识
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cprogramming/02exp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    二、表达式与简单程序设计
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cprogramming/03decision/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    三、分支程序设计
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cprogramming/04loop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    四、循环 Loop
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cprogramming/05array/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    五、数组 Array
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cprogramming/06ptr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    六、指针 Pointer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cprogramming/07fun/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    七、函数 Function
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cprogramming/08str/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    八、字符串 String
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cprogramming/09stru/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    九、结构体 Structure
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cprogramming/end/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    完结撒花
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    内部课程
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      提示：
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      引言：
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      前提：
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      比赛意见：
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      个人感悟：
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bug" class="md-nav__link">
+    <span class="md-ellipsis">
+      一.基础bug
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="一.基础bug">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bug_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      常见的基础bug:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      ！！！.函数传数组：
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      二.反馈：
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      三.检测时的几种错误：
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="三.检测时的几种错误：">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.编译错误：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.运行超时：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.无法在规定时间内运行：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.段错误：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.输入格式不符：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.正确率为**%：
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      四.输入格式与预期不符合：
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      五.输入结果为空：
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      六.书写代码的一些小建议：
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="六.书写代码的一些小建议：">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.定义变量：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.观感：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.输入：
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      七.删改代码：
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      八.多组数据：
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      九.字符串问题：
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="九.字符串问题：">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stringstring-a" class="md-nav__link">
+    <span class="md-ellipsis">
+      string函数定义：string a;
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="string函数定义：string a;">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cstring" class="md-nav__link">
+    <span class="md-ellipsis">
+      C++删除string最后一个字符的几种方法
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+
+
+
+
+<h1 id="debug-secret-script"><strong><em>Debug Secret Script</em></strong><a class="headerlink" href="#debug-secret-script" title="Permanent link">&para;</a></h1>
+<h2 id="_1">提示：<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>在笔记内部使用了部分C++的内容，和语法</p>
+<p>在此声明：</p>
+<p>cout&lt;&lt;" " 可以看成C语言中的printf</p>
+<p>cin&gt;&gt;"  "可以看成C语言中的scanf</p>
+<p>string部分采用的是C++，C语言字符串部分由于不常用，所以在内容中尚未体现</p>
+<h2 id="_2">引言：<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>Debug也是一种能力的体现，在算法学习的过程中，不光要学习各种算法知识（c++，stl，数据结构等），还要学会调试代码。
+每一个人遇到的bug是不相同的，但我的目的是希望能给初学者在debug的过程中提供一些方向，我所写下的内容不多，希望能给你们带来一些帮助。</p>
+<h2 id="_3">前提：<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>要稳住心态。</p>
+<p>谨慎思考，减少罚时。</p>
+<p>切忌自大，要仔细检查代码。</p>
+<p>灵活使用IDE。</p>
+<p><span style="color: red">明白题意。</span></p>
+<p>团队赛，要和队友沟通，拓展思路。</p>
+<h2 id="_4">比赛意见：<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>1.标识符命名需规范（简洁的前提是，你能记住每个标识符所代表的含义）</p>
+<p>2.电脑死机时，或主动关机的情况下，不要随意乱动，请及时联系工作人员。</p>
+<p>3.如果在正式开始的时候，发现无法进入系统，或者系统未安装，请及时联系工作人员。</p>
+<p>4.发放账户密码的纸张，请自己盖好，防止其他队伍登录，帮你增加罚时</p>
+<p>5.注意观察榜单，挑简单的先做。</p>
+<p><span style="color: red">6.注意！！！不要在比赛时间尚未开始时翻看试卷。</span></p>
+<p>7.不要有心理压力，放平心态。</p>
+<p>8.减少犯罪次数（在提交显示错误之后，请认真修改）   </p>
+<p>9.不要按Ctrl+Alt+F10,这会使电脑死机。</p>
+<p>10.注意保存自己的代码。</p>
+<p>11.出现问题，不要求助身边选手，人心叵测。</p>
+<p>12.请选择靠谱的队友，能坚持下去和你比赛的。   </p>
+<p>13.如果遇到提交结果为undefined（测题机坏了），请暂停提交，如果继续提交，很有可能一堆wa下去。</p>
+<p><span style="color: red">14.禁止作弊！！！</span></p>
+<p><img alt="image-20241103191540313" src="../tl_debug_images/image-20241103191540313.png" /></p>
+<h2 id="_5">个人感悟：<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>放平心态，这也是我在经历数次的折磨之后，明白的一件事情，专心调试就好，其他人做完不做完又有什么可在意的呢？（虽然有位学长总是在强调“犯罪”的问题，但这只是为了让你重视和珍惜每一次提交的机会，不要有太多压力，就算爆零又如何？）尽力就好，享受过程，debug是痛苦的，但是在这漫长而又枯燥的过程中，我们理应学会苦中作乐。</p>
+<h2 id="bug">一.基础bug<a class="headerlink" href="#bug" title="Permanent link">&para;</a></h2>
+<p>基础bug---IDE能直接识别出的bug。</p>
+<p>识别基础bug的最好方式是---打开 <span style="color: red">IDE</span></p>
+<p>解决方式：阅读IDE反馈的信息</p>
+<h3 id="bug_1">常见的基础bug:<a class="headerlink" href="#bug_1" title="Permanent link">&para;</a></h3>
+<p><code>{}</code>问题：很多时候，由于自己的复制剪贴，可能会使得 <code>}</code> 漏掉，这个时候点击测验的时候，可能会显示<code>error}</code>，
+因而在写代码的过程中，要注意是否忘记 <code>}</code> 符号。
+<div class="highlight"><pre><span></span><code><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">a</span><span class="p">);</span><span class="w"> </span><span class="c1">//常见的错误就是忘记输入了&amp;（取地址符）</span>
+
+<span class="n">scanf</span><span class="p">(</span><span class="s">&quot;% &quot;</span><span class="p">,</span><span class="o">&amp;</span><span class="p">);</span><span class="w">  </span><span class="c1">//%后面的格式转换码与数据类型没有对应   易错点：double 对应%lf</span>
+
+<span class="n">自定义函数时</span><span class="err">，</span><span class="n">忘记return</span><span class="p">;</span>
+</code></pre></div></p>
+<p>标识符先前已经定义过：
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">;</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="o">=</span><span class="mi">1024</span><span class="p">;(</span><span class="n">报错</span><span class="p">)</span><span class="w"> </span><span class="c1">//不能连续定义同一个变量的数据类型，如果要进行修改可以选择（float）b;或者直接删除此语句</span>
+<span class="c1">//进行强制修改其类型。</span>
+</code></pre></div></p>
+<p>同一变量名称反复定义的方法：</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">a</span><span class="o">&lt;</span><span class="mi">5</span><span class="p">;</span><span class="n">a</span><span class="o">++</span><span class="p">){</span>
+
+<span class="p">}</span>
+<span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">a</span><span class="o">&lt;</span><span class="mi">5</span><span class="p">;</span><span class="n">a</span><span class="o">++</span><span class="p">){</span>
+
+<span class="p">}</span>
+<span class="c1">//在for()内部进行定义</span>
+</code></pre></div>
+<p>由于变量a是在for循环内部定义的，因此可以重复定义。（有一定风险就是，你得确保这个变量不需要保存数据什么的，因为在外界使用的话，会显示该变量不存在）</p>
+<h3 id="_6">！！！.函数传数组：<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="../tl_debug_images/image-20241104202811317.png" /></p>
+<p><strong><em>正确传递数组的方式为：</em></strong></p>
+<p><img alt="" src="../tl_debug_images/image-20241104203719254.png" /></p>
+<p><img alt="" src="../tl_debug_images/image-20241104203750361.png" /></p>
+<h2 id="_7">二.反馈：<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<p>在debug的过程中，反馈尤为重要</p>
+<p>反馈分为两种：
+第一种为IDE所给你的反馈
+第二种为自行反馈</p>
+<p>自行反馈意味着，你需要自己寻找到错误在哪
+常见的做法是，在每一个模块的内部，放置一条测试语句 </p>
+<div class="highlight"><pre><span></span><code><span class="n">例如</span><span class="err">：</span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;123&quot;</span><span class="p">);</span>
+</code></pre></div>
+<p>看看该语句是否在判断语句的内部中实现。(自行找到反馈，计算机不能告诉到底是哪个环节输入错误，但是你可以自己验证并得到反馈)
+ 例如：
+ <div class="highlight"><pre><span></span><code><span class="k">if</span><span class="p">(</span><span class="n">条件</span><span class="p">){</span>
+<span class="w">   </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;123&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+检查数组正确输入：
+<div class="highlight"><pre><span></span><code><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+</code></pre></div>
+大部分IDE和做题系统，反馈都是英文的，不要求把单词都认的出来，找到关键信息（真正的错误提示）即可；</p>
+<h2 id="_8">三.检测时的几种错误：<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<p><b style="color: red">检测时，要注意输入的是案例几，不要对着案例一进行检测，然后对着案例二的答案进行修改</b></p>
+<h3 id="1">1.编译错误：<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="../tl_debug_images/image-20241030012935285.png" /></p>
+<p>最容易修改的错误，一般根据反馈，找出关键信息，即刻修改。</p>
+<p>例如此案例，能清楚的看见计算机将错误的语句反馈给我们，</p>
+<p>当然，如果看不懂计算机告诉你的信息，建议一点点的开始看，从找关键符号，和使用翻译软件等方式解决。</p>
+<h3 id="2">2.运行超时：<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="../tl_debug_images/image-20241030015335382.png" /></p>
+<p>基本上就是for等循环出现了问题，一般要关注的点有，循环条件，循环变量是否在函数内部进行改变，以至于陷入死循环。</p>
+<p>for循环内部无范围限制</p>
+<div class="highlight"><pre><span></span><code><span class="n">例如</span><span class="err">：</span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="mi">5</span><span class="p">;)</span><span class="w">    </span><span class="c1">//缺少了i++(变量未改变)</span>
+</code></pre></div>
+<p><span style="color: red">ps : while循环比较特殊，它可以存入特殊循环条件</span></p>
+<p>又或者是for循环中出现</p>
+<div class="highlight"><pre><span></span><code>for(int i=0;i&lt;n;j++) //循环变量名称错误！！！
+</code></pre></div>
+<p>若是使用while循环</p>
+<div class="highlight"><pre><span></span><code>请检查：
+while(是否是死循环？)
+while（是否判断结束循环的条件中，变量的范围是否没考虑）
+</code></pre></div>
+<h3 id="3">3.无法在规定时间内运行：<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
+<p>由于时间复杂度过高，导致超时。</p>
+<p>解决方法：</p>
+<p>通过if等其他手段，减少循环的使用。</p>
+<p>可以去学习一些优化操作，如剪枝等；</p>
+<p>选择更换做题思路，可能是自己将简单问题复杂化了，算法题的思路有很多种，如果可以，请不要将自己的思维固化。</p>
+<p>ps:有些题是无法单纯通过暴力枚举解决的，一味的暴力枚举，换来的代价就是极高的时间复杂度。</p>
+<p>在算法的学习中，需要去学会计算时间复杂度</p>
+<p>pps:使用#define endl '\n';</p>
+<p>endl运行消耗的时间大于\n，为了书写习惯，此定义将完美避开这个问题</p>
+<h3 id="4">4.段错误：<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="../tl_debug_images/image-20241030015232302.png" /></p>
+<p>段错误:程序发生段错误，可能是数组越界，堆栈溢出（比如，递归调用层数太多）等情况引起。</p>
+<p>一般情况，需要检查的是数组是否开的过多，导致数组越界（数组越界，是因为连续开两个数组，在内存中的排布其实是相连的）</p>
+<p>解决方式：如果自己定义的数组过多，可以考虑删除一个数组。</p>
+<p>检查自己的数组容量是否开的过大（一般范围是在1e8左右）</p>
+<p>下标是否正确？一般是在循环中查看是否循环内容出了问题</p>
+<p><span style="color: red">函数递归调用过多，检查函数是否内部语句是否正确</span></p>
+<p>ps:检查到底是哪个环节出现问题，通过将部分语句变成注释<code>//</code>，看看是否仍然发生段错误，如果到了最开始时，仍出现段错误，那么只有一种结果就是数组开的过于庞大。</p>
+<p>！！！在一些题中，不要根据题目中出现数组，就一味的去使用数组，当出现数组越界的时候，最好是转换思路，同时减少或者避免数组的使用</p>
+<p>！！！在做题中，请减少二维数组的使用</p>
+<h3 id="5">5.输入格式不符：<a class="headerlink" href="#5" title="Permanent link">&para;</a></h3>
+<p>审题不够严谨造成的原因，去检查最后输出格式是否遗漏"  "(空格)</p>
+<p>或者输出内容是否包含  , '等符号</p>
+<p>注意保留几位小数点</p>
+<p>如果是四舍五入的问题，注意使用round函数（四舍五入到整数）。使用方式：通过*保留位数的10次幂，再将其除掉。</p>
+<h3 id="6">6.正确率为**%：<a class="headerlink" href="#6" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="../tl_debug_images/image-20241030014926374.png" /></p>
+<p>如果正确率在50%附近徘徊，说明此题可能分奇数和偶数，随后将输入示例，看看是否和奇数和偶数有关系。</p>
+<p>如果正确率较低，那么基本上，切换示例就能够看出来问题出现在哪。(可能是数据范围小了)</p>
+<p>多切换案例，想一些极端的例子</p>
+<p>又或者由于超时，导致过大的案例未通过（观察运行时间）</p>
+<h2 id="_9">四.输入格式与预期不符合：<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<p><img alt="" src="../tl_debug_images/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20241029010711.png" /></p>
+<p>如此题所示，在使用C++输入时候，如果将一串数据分单个数字存入其中，cin无法实现，请选择使用C语言中的scanf("%1d",a);</p>
+<p>%1d意味着，每次只存入一个数。</p>
+<p><span style="color: red">所以在做题的过程中，需要注意示例的输入格式。</span></p>
+<p>ps:虽然C++在输入输出等层面变得更加便利和迅速，但是C语言的某些功能，仍然是必不可少的，因此，在拓展C++语言的时候，也不要忘记巩固C语言的使用。</p>
+<p>！！！同时，观察运行时间是否超时，这种时候一般为超时，以至于有些案例无法正常通过，需要改变解题思路。</p>
+<h2 id="_10">五.输入结果为空：<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
+<p>对于debug过程中，最怕的就是没有收获任何的反馈，因此在面临输入结果为空的时候，优先去查看自己的输出语句。</p>
+<div class="highlight"><pre><span></span><code><span class="n">例如</span><span class="err">：</span><span class="k">for</span><span class="p">(</span><span class="w">  </span><span class="p">;</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="p">){</span>
+<span class="w">            </span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&quot;123&quot;</span><span class="p">;</span><span class="c1">//去检查for循环是否出现问题。</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="p">){</span>
+<span class="w">        </span><span class="n">c</span><span class="o">++</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">c</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span><span class="w">  </span><span class="c1">//如果C的输出为空，寻找C变量上一次出现的位置是在什么位置，随后检查相应的语句。</span>
+</code></pre></div>
+<p>除此之外，还有各种判断语句，都可能影响最后输出为空的情况。</p>
+<p>如果是for循环和if的嵌套情况之下，可以通过</p>
+<div class="highlight"><pre><span></span><code><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&quot;语句&quot;</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+</code></pre></div>
+<p>判断是哪个环节出现错误。</p>
+<p>同时，在定义变量的情况之下，有的时候需要将变量进行初始化=0</p>
+<p><img alt="" src="../tl_debug_images/image-20241030221314077.png" /></p>
+<p>例如这道题：去除前导0，不只是出现0408这种情况，还有可能会出现00408，因此在debug的过程中，通过判断数组的第一位是否为0是远远不够的，而如果只判断数组是否为0，然后为0不输出0，也是不可取的，因为这样的话，只会留下48。（只判断是否为0，并不是删除前导0，是删除数组中所有的0）</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">p</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">p</span><span class="o">&lt;</span><span class="n">c</span><span class="p">;</span><span class="n">p</span><span class="o">++</span><span class="p">){</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="n">p</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">){</span>
+<span class="w">        </span><span class="k">for</span><span class="p">(;</span><span class="n">p</span><span class="o">&lt;</span><span class="n">c</span><span class="p">;</span><span class="n">p</span><span class="o">++</span><span class="p">)</span>
+<span class="w">       </span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">b</span><span class="p">[</span><span class="n">p</span><span class="p">];</span><span class="c1">//位置正确</span>
+<span class="w">    </span><span class="c1">//for(int i=p;i&lt;c;i++)</span>
+<span class="w">    </span><span class="c1">//cout&lt;&lt;b[i];   </span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+<span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>错误代码如下：</p>
+<p><div class="highlight"><pre><span></span><code><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">p</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">p</span><span class="o">&lt;</span><span class="n">c</span><span class="p">;</span><span class="n">p</span><span class="o">++</span><span class="p">){</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="n">p</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">){</span>
+<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="n">p</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">c</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="w">    </span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">];</span><span class="w">   </span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">break</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+错误原因：意外使用break;同时break是在for循环中放置，并非是放置在if中，因此造成了输出结果为空。</p>
+<p><span style="color: green">不难发现，有些时候，都是一些很简单的bug阻止结果的的正确</span>
+<span style="color: red">不过不要因此变得消沉，请相信自己，下一次，绝对不会犯相同的错误。正视自己的失败，才能慢慢变得更加强大</span></p>
+<h2 id="_11">六.书写代码的一些小建议：<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
+<h3 id="1_1">1.定义变量：<a class="headerlink" href="#1_1" title="Permanent link">&para;</a></h3>
+<p>在定义整型变量的时候，尽量使用long long 而非int，这样可以不用判断数据是否超过Int型。</p>
+<p>同理，在定义浮点型的时候，选择使用double，精确度更高，确保小数点的后几位都是正确的。</p>
+<p>如果觉得long long在输入过于繁琐，可以选择在开头</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;bits/stdc++.h&gt;</span>
+<span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span>
+<span class="k">typedef</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">ll</span><span class="p">;</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">ll</span><span class="w"> </span><span class="n">a</span><span class="p">;</span><span class="c1">//直接输入ll.就代表着long long</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>同时，定义变量名称的时候，尽量避免使用o作为变量名称（因为o可能会和零混用</p>
+<p>）</p>
+<h3 id="2_1">2.观感：<a class="headerlink" href="#2_1" title="Permanent link">&para;</a></h3>
+<p>尽量让自己代码的长度缩减一点</p>
+<p>使用三项表达式：</p>
+<div class="highlight"><pre><span></span><code><span class="n">表达式1</span><span class="err">？</span><span class="n">表达式2</span><span class="err">：</span><span class="n">表达式3</span>
+</code></pre></div>
+<p>格式改变：</p>
+<div class="highlight"><pre><span></span><code><span class="n">例如</span><span class="err">：</span>
+<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span><span class="w">       </span><span class="c1">//将&#39;{&#39;移动到和for同一行的位置来</span>
+<span class="w">        </span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&quot;110&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="n">如果是另一种形式</span><span class="err">：</span>
+<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&quot;110&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+</code></pre></div>
+<p>可以看出，优化后的代码减少了一行，这样看可能不太直观，那如果很多个for循环叠加的话？</p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
+<span class="w">     </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">p</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">p</span><span class="o">&lt;</span><span class="n">m</span><span class="p">;</span><span class="n">p</span><span class="o">++</span><span class="p">){</span>
+<span class="w">     </span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&quot;110&quot;</span><span class="p">;</span>
+<span class="w">     </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="n">如若不然</span><span class="err">：</span>
+<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">     </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">p</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">p</span><span class="o">&lt;</span><span class="n">m</span><span class="p">;</span><span class="n">p</span><span class="o">++</span><span class="p">)</span>
+<span class="w">     </span><span class="p">{</span>
+<span class="w">     </span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&quot;110&quot;</span><span class="p">;</span>
+<span class="w">     </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+</code></pre></div>
+<p>仅仅只是两个for循环的嵌套，就能看的出来，将 ' { ' 推进一行，所带来的观感就变得大不相同。</p>
+<p>当然，可以稍微紧凑一点，因为过长的代码容易分辨不清各个语句的分布，但是请不要将代码堆砌成密不透风的城墙，同样也会影响读代码时候的速度。</p>
+<h3 id="3_1">3.输入：<a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h3>
+<p>输入数组时，要注意变量名称和变量位置是否正确:</p>
+<p>例如： y[i]-x[i]，不要写成y[i]-y[i]</p>
+<p><b style="color: red">做题时，如果要分离每一位数，可以选择定义一个字符串，将每一位数都存入，能大大减小做题难度。</b></p>
+<h2 id="_12">七.删改代码：<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
+<p>删改代码的时候，不要进行遗漏，或者误删，在进行删除之后要<span style="color: red">重新进行检查</span>。</p>
+<p>必要的时候通过使用注释来表明点。</p>
+<h2 id="_13">八.多组数据：<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
+<p>在有些题目的样例中，并没有举出多组输入，这往往会被人所忽略，在做题前请认真读题。</p>
+<div class="highlight"><pre><span></span><code>int t;//几组数据
+while(t--){
+
+}//最外层使用while可以有效的将单组数据的内部循环分清
+</code></pre></div>
+<p>1.如果要识别换行符：输入</p>
+<div class="highlight"><pre><span></span><code>cin.get()=&#39;\n&#39;
+</code></pre></div>
+<p>2.循环输入到结束：</p>
+<div class="highlight"><pre><span></span><code>whlie(cin&gt;&gt;n)
+</code></pre></div>
+<h2 id="_14">九.字符串问题：<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h2>
+<p><img alt="" src="../tl_debug_images/image-20241107193258159.png" /></p>
+<p>在输入数字字符串的时候；</p>
+<p>虽然输入的是数字，但是存入的确实字符，因此，如果要将数字输出，需要减去字符‘0’</p>
+<div class="highlight"><pre><span></span><code>例如：b[i]-&#39;0&#39;;
+</code></pre></div>
+<p>在字符串题中，我一般使用C++中的string来写</p>
+<h3 id="stringstring-a">string函数定义：string a;<a class="headerlink" href="#stringstring-a" title="Permanent link">&para;</a></h3>
+<p>输入（包括空格的输入）getline(cin,a);</p>
+<p>知晓字符串的尺寸 ：a.size()</p>
+<p>开循环单个输出字符串:
+for(int i=0;i&lt;a.size();i++)
+{
+    cout&lt;&lt;a[i];
+}
+字符串长度length()
+<strong><em>*</em></strong>非必要，别tm开那么多的数组，无论是字符串数组，还是正常数组
+<strong><em>*</em></strong>数组越界，纯自找的，少给自己整点麻烦事！！！！！！！</p>
+<p>c++中的size()和length()没有区别
+都能算出字符长度</p>
+<p>string str：生成空字符串</p>
+<p>string s(str)：生成字符串为str的复制品</p>
+<p>string s(str, strbegin,strlen)：将字符串str中从下标strbegin开始、长度为strlen的部分作为字符串初值</p>
+<p>string s(cstr, char_len)：以C_string类型cstr的前char_len个字符串作为字符串s的初值</p>
+<p>string s(num ,c)：生成num个c字符的字符串</p>
+<p>string s(str, stridx)：将字符串str中从下标stridx开始到字符串结束的位置作为字符串初值</p>
+<p>eg:</p>
+<div class="highlight"><pre><span></span><code><span class="n">string</span><span class="w"> </span><span class="n">str1</span><span class="p">;</span><span class="w">               </span><span class="c1">//生成空字符串</span>
+<span class="n">string</span><span class="w"> </span><span class="n">str2</span><span class="p">(</span><span class="s">&quot;123456789&quot;</span><span class="p">);</span><span class="w">  </span><span class="c1">//生成&quot;1234456789&quot;的复制品</span>
+<span class="n">string</span><span class="w"> </span><span class="n">str3</span><span class="p">(</span><span class="s">&quot;12345&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span><span class="c1">//结果为&quot;123&quot;</span>
+<span class="n">string</span><span class="w"> </span><span class="n">str4</span><span class="p">(</span><span class="s">&quot;012345&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">);</span><span class="w">  </span><span class="c1">//结果为&quot;01234&quot;</span>
+<span class="n">string</span><span class="w"> </span><span class="n">str5</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;1&#39;</span><span class="p">);</span><span class="w">       </span><span class="c1">//结果为&quot;11111&quot;</span>
+<span class="n">string</span><span class="w"> </span><span class="nf">str6</span><span class="p">(</span><span class="n">str2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span><span class="w">      </span><span class="c1">//结果为&quot;3456789&quot;</span>
+</code></pre></div>
+<ol>
+<li>size()和length()：返回string对象的字符个数，他们执行效果相同。</li>
+<li>max_size()：返回string对象最多包含的字符数，超出会抛出length_error异常</li>
+<li>capacity()：重新分配内存之前，string对象能包含的最大字符数</li>
+</ol>
+<p><strong><em>*string的交换：
+*</em></strong>void swap(string &amp;s2);  //交换当前字符串与s2的值</p>
+<p>string的插入：push_back() 和 insert()
+void  test4()
+{
+    string s1;</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 尾插一个字符</span>
+<span class="n">s1</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="sc">&#39;a&#39;</span><span class="p">);</span>
+<span class="n">s1</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="sc">&#39;b&#39;</span><span class="p">);</span>
+<span class="n">s1</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="sc">&#39;c&#39;</span><span class="p">);</span>
+<span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&quot;s1:&quot;</span><span class="o">&lt;&lt;</span><span class="n">s1</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span><span class="w"> </span><span class="c1">// s1:abc</span>
+
+<span class="c1">// insert(pos,char):在制定的位置pos前插入字符char</span>
+<span class="n">s1</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">s1</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="sc">&#39;1&#39;</span><span class="p">);</span>
+<span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&quot;s1:&quot;</span><span class="o">&lt;&lt;</span><span class="n">s1</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span><span class="w"> </span><span class="c1">// s1:1abc</span>
+</code></pre></div>
+<p>}</p>
+<h4 id="cstring"><strong>C++删除string最后一个字符的几种方法</strong><a class="headerlink" href="#cstring" title="Permanent link">&para;</a></h4>
+<h1 id="include">include<iostream><a class="headerlink" href="#include" title="Permanent link">&para;</a></h1>
+<h1 id="include_1">include<string><a class="headerlink" href="#include_1" title="Permanent link">&para;</a></h1>
+<p>using namespace std;
+int main() 
+{
+    string str;
+    str = "123456";
+    cout &lt;&lt; str &lt;&lt; endl;</p>
+<div class="highlight"><pre><span></span><code><span class="c1">//方法一：使用substr()</span>
+<span class="n">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">str</span><span class="p">.</span><span class="n">substr</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">str</span><span class="p">.</span><span class="n">length</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">str</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+
+<span class="c1">//方法二：使用erase()</span>
+<span class="n">str</span><span class="p">.</span><span class="n">erase</span><span class="p">(</span><span class="n">str</span><span class="p">.</span><span class="n">end</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">str</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+
+<span class="c1">//方法三：使用pop_back()</span>
+<span class="n">str</span><span class="p">.</span><span class="n">pop_back</span><span class="p">();</span>
+<span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">str</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</code></pre></div>
+<p>}</p>
+<h2 id="_15">十.注意使用函数之后，变量转换的类型：<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h2>
+<p>pow( )</p>
+<p>sqrt( )</p>
+<p>需要在函数前面进行强制性转换（long long）</p>
+<p>同时pow( )中，无法使用&#8531;（不是整除的数）</p>
+<p>同时由于整型的存储是有范围的</p>
+<p>在计算时，请保持先除（/）后乘（*）的习惯</p>
+<h2 id="_16"><em>结尾：</em><a class="headerlink" href="#_16" title="Permanent link">&para;</a></h2>
+<p>不难发现，有一些部分的案例很少，由于我自身并不喜欢算法，因而有过一个月的时间不去添加笔记上面的内容了。5000字已经是我现在能写的极限了，再加上算法题未来会很少做，所以我打算就此完结。后续的添加、修改和补充，就留给后面的学弟学妹们吧！</p>
+<p>写这个笔记的想法，来自于软件2201的杜金雨，特此也感谢他的C语言速通笔记，在我初学C语言的时候，给了我很大的帮助。</p>
+<p>虽然笔记名称叫做Debug Secret Script但是，我在里面写的不止是这些，可能有点脱离主题，但是为避免再开一个笔记单独讲这些，还是选择将这一切归纳到一起。从我个人角度来看，这一切是值得的，总归是留下了点什么东西。</p>
+<p>面对排名的不如意，我曾多次陷入迷茫，感到失落。在debug过程中，也因为4、5个小时，甚至一天，让自己崩溃。为了防止有人再次陷入相同的问题，再次面临崩溃，希望这个笔记能帮助到你。</p>
+<p>如果遇到一名叫葛日波的老师教你C语言，不管你那时C语言是否学完，请认真听讲，会使你受益匪浅。</p>
+<p>对UIT的每日签题，我有以下几点要求要讲：</p>
+<p>1.切忌上网抄袭，类似题解等东西，其实也不建议看（除非超过四个小时以上未能解开）</p>
+<p>2.切忌注重签题排名，每日签题的目的是为了锻炼你的能力</p>
+<p>3.不要抄身边人的代码，会有人负责查重</p>
+<p>4.不准使用AI辅助做题，在学习阶段，重要的是锻炼你的编码能力</p>
+<p>5.IOI赛制，禁止单次提交超过30次</p>
+<div class="codehilite"><pre><span></span><code>                                               不爱算法、不弱算法
+
+                                                                                        ------数技2401沐沐
+</code></pre></div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+  
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "search.suggest", "search.highlight", "search.share", "announce.dismiss", "content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.tooltips", "navigation.footer", "navigation.indexes", "navigation.sections", "navigation.tabs", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.56ea9cef.min.js"></script>
+      
+        <script src="../../static/mfuns-player/standard-player.umd.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1299 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://uit.kokomi.ltd/wiki/cprogramming/06ptr/">
+      
+      
+        <link rel="prev" href="../05array/">
+      
+      
+        <link rel="next" href="../07fun/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
+    
+    
+      
+        <title>六、指针 Pointer - UIT WIKI</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+  
+    <script defer src="https://analytics.kokomi.ltd/script.js" data-website-id="37c07a74-059a-4d0e-8e65-38be80be4756"></script>
+  
+
+  
+      
+    
+
+
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:300,300i,400,400i,700,700i%7CSource+Code+Pro:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans";--md-code-font:"Source Code Pro"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../static/stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="preference" data-md-color-primary="custom" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="UIT WIKI" class="md-header__button md-logo" aria-label="UIT WIKI" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path d="M17.029 18.772l.777 1.166-5.417 2.709L0 16.451V4.063l5.417-2.709 5.298 7.948 7.867-5.24L24 1.354V16.84l-5.417 2.709-1.554-.777zm2.023-13.827v13.253l3.949-1.975V2.97l-3.949 1.975zM5.076 2.642L1.458 4.45 12.73 21.358l3.618-1.809L5.076 2.642z" />
+</svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            UIT WIKI
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              六、指针 Pointer
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../.." class="md-tabs__link">
+          
+  
+  
+    
+  
+  简介
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  C语言速通
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../course/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  内部课程
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="UIT WIKI" class="md-nav__button md-logo" aria-label="UIT WIKI" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path d="M17.029 18.772l.777 1.166-5.417 2.709L0 16.451V4.063l5.417-2.709 5.298 7.948 7.867-5.24L24 1.354V16.84l-5.417 2.709-1.554-.777zm2.023-13.827v13.253l3.949-1.975V2.97l-3.949 1.975zM5.076 2.642L1.458 4.45 12.73 21.358l3.618-1.809L5.076 2.642z" />
+</svg>
+
+    </a>
+    UIT WIKI
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../.." class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    简介
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1" id="__nav_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            简介
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../copyright/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    版权声明
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    C语言速通
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            C语言速通
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01basic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    一、基础知识
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02exp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    二、表达式与简单程序设计
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03decision/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    三、分支程序设计
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04loop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    四、循环 Loop
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05array/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    五、数组 Array
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    六、指针 Pointer
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    六、指针 Pointer
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      指针是什么？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      定义指针
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      多级指针
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      用指针处理一维数组
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      用指针处理二维数组
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      动态内存分配
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07fun/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    七、函数 Function
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08str/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    八、字符串 String
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09stru/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    九、结构体 Structure
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../end/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    完结撒花
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    内部课程
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      指针是什么？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      定义指针
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      多级指针
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      用指针处理一维数组
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      用指针处理二维数组
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      动态内存分配
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>六、指针 Pointer</h1>
+
+<p>指针是一个比较难的地方，对于python、java来说，c/c++难的点就在指针和多继承等部分，所以在此章节也不会详细讲述。</p>
+<h2 id="_1">指针是什么？<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>指针是用来存储内存地址的变量。</p>
+<p>通过<strong>地址</strong>
+直接指向内存中该地址的值。由于通过地址能够找到所需的变量存储单元，可以说地址指向该变量存储单元，因此将地址形象化称为"指针"
+。总而言之，指针就是变量，存放内存单元的地址，<strong>存放在指针中的值都会被当作地址处理</strong>。</p>
+<p>对于指针来说，定义稍微与普通的变量定义不同</p>
+<h2 id="_2"><strong>定义指针</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>数据类型标识符 ==*==指针名；（注意指针名前有一个星号）</p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">p1</span><span class="p">;</span>
+<span class="kt">float</span><span class="w"> </span><span class="o">*</span><span class="n">p2</span><span class="p">;</span>
+<span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">p3</span><span class="p">;</span>
+<span class="c1">// 第1条语句定义了一个int型的指针p1</span>
+<span class="c1">// 第2条语句定义了一个float型的指针p2</span>
+<span class="c1">// 第3条语句定义了一个char型的指针p3</span>
+</code></pre></div>
+<p>这里是普通定义，那么要使指针指向变量的定义方式又有所不同</p>
+<p>数据类型标识符 *指针名 = &amp;变量名</p>
+<p>或者</p>
+<p>数据类型标识符 *指针名</p>
+<p>指针名 = &amp;变量名</p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+<span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">px</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">x</span><span class="p">;</span>
+
+<span class="kt">char</span><span class="w"> </span><span class="n">c</span><span class="p">;</span>
+<span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">pc</span><span class="p">;</span>
+<span class="n">pc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">c</span><span class="p">;</span>
+</code></pre></div>
+<p>我们知道了如何定义，接下来就是如何用指针处理变量</p>
+<p>指针名 等价于 &amp;变量名</p>
+<p>*指针名 等价于 变量名</p>
+<p>有些拗口，可以理解为指针名前有星号就是变量里的值，没有星号就是变量的地址</p>
+<p>“<strong>有星无址</strong>“ 这是我记忆的口诀：有星号就没有地址，有地址有没有星号</p>
+<p>所以我们可以使用指针进行一些操作</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(){</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">6</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">pa</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">a</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">pb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">b</span><span class="p">;</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span><span class="o">*</span><span class="n">pa</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">*</span><span class="n">pb</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="c1">// 这段代码会输出11</span>
+</code></pre></div>
+<p><strong>注意事项</strong></p>
+<ol>
+<li>指针的类型必须和变量类型一致</li>
+<li>指针也有自己的地址</li>
+<li>可以用%p输出地址</li>
+<li>只有地址才可以取间接 ( * ) 运算</li>
+<li>&amp; 和 * 相互抵消</li>
+</ol>
+<h2 id="_3">多级指针<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>多级指针就是套娃 <em>p  </em>*p 以此类推</p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w">   </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span>
+<span class="kt">int</span><span class="w">   </span><span class="o">*</span><span class="n">px</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">x</span><span class="p">;</span><span class="w">       </span>
+<span class="kt">int</span><span class="w">   </span><span class="o">**</span><span class="n">ppx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">px</span><span class="p">;</span>
+<span class="kt">int</span><span class="w">   </span><span class="o">***</span><span class="n">pppx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">ppx</span><span class="p">;</span>
+<span class="c1">// 第2条语句定义了一级指针px指向了变量x</span>
+<span class="c1">// 第3条语句定义了二级指针ppx指向了一级指针px</span>
+<span class="c1">// 第4条语句定义了三级指针pppx指向了二级指针ppx</span>
+</code></pre></div>
+<p>存在的等价关系：</p>
+<p><mark><strong> pppx==等价于 ==</strong>&amp;ppx==等价于 ==<em>ppx==等价于 ==</em>&amp;px==等价于==px==等价于</mark>&amp;x==</p>
+<p><mark><em><em> * pppx==等价于 ==</em> * * &amp;ppx==等价于 ==</em> * ppx==等价于 ==<em> </em>&amp;px==等价于 ==* px==等价于==x</mark></p>
+<p>// 因为markdown格式下的笔记的加粗和斜体是用 * 来标记，所以上面的 * 会用空格隔开，在代码书写的时候尽量不要空格</p>
+<p>结论：</p>
+<p>n级指针取n-1次间接运算得变量的地址</p>
+<p>n级指针取n次间接运算的变量的值</p>
+<h2 id="_4">用指针处理一维数组<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>一维数组元素的存储方式是按下标递增顺序连续存放</p>
+<p>数组名是首元素的地址</p>
+<p>a<strong>等价于</strong>&amp;a[0]</p>
+<p>所以指针指向元素的格式为</p>
+<p><strong>指针名 = &amp;数组名[i]；</strong></p>
+<p>如果你只是想指向首元素，无论填写0，还是直接让 <strong>指针名 = 数组名</strong> 都可以做到</p>
+<p>对于指针的常用运算，当你理解了上述部分在理解起来就会很简单</p>
+<ol>
+<li>指针+n的值是指针后方第n个元素的地址</li>
+<li>指针-n的值是指针前方第n个元素的地址</li>
+<li>指针++是指针向后移动1个元素位置</li>
+<li>指针--是指针向前移动1个元素位置</li>
+</ol>
+<p>那么等价关系在这里也是成立的</p>
+<ol>
+<li>p+i 等价于 &amp;a[i]</li>
+<li>*(p+i) 等价于 a[i]</li>
+</ol>
+<p>来个程序举个例子</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 输入10个成绩，求总分</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="cp">#define N 10</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">score</span><span class="p">[</span><span class="n">N</span><span class="p">];</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="o">=</span><span class="n">score</span><span class="p">;</span><span class="w">  </span><span class="c1">//指针p指向首元素</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">sumScore</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w"> </span>
+
+<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">N</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span><span class="w"> </span><span class="c1">//录入成绩</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="err">“</span><span class="n">请输入第</span><span class="o">%</span><span class="n">d个成绩</span><span class="o">:</span><span class="w"> </span><span class="err">”</span><span class="p">,</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="err">“</span><span class="o">%</span><span class="n">d</span><span class="err">”</span><span class="p">,</span><span class="n">p</span><span class="o">+</span><span class="n">i</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span>
+
+<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">sumScore</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">N</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="n">sumScore</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="o">*</span><span class="p">(</span><span class="n">p</span><span class="o">+</span><span class="n">i</span><span class="p">);</span><span class="w"> </span><span class="c1">//求总成绩</span>
+
+<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">N</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="err">“</span><span class="o">%</span><span class="mi">5</span><span class="n">d</span><span class="err">”</span><span class="p">,</span><span class="o">*</span><span class="p">(</span><span class="n">p</span><span class="o">+</span><span class="n">i</span><span class="p">));</span><span class="w"> </span><span class="c1">//输出成绩</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="err">“\</span><span class="n">n</span><span class="err">\</span><span class="n">n</span><span class="err">”</span><span class="p">);</span><span class="w"> </span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="err">“</span><span class="n">总成绩是</span><span class="o">%</span><span class="n">d</span><span class="err">\</span><span class="n">n</span><span class="err">”</span><span class="p">,</span><span class="n">sumScore</span><span class="p">);</span><span class="w"> </span><span class="c1">//输出总成绩</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="_5">用指针处理二维数组<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>对于二维数组来说，二维数组的元素按先行后列下标递增的顺序连续存放</p>
+<p>比如 ：int a [2] [3] = [1,2,3,4,5,6];</p>
+<p>那么存储方式就是</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">a[0] [0]</th>
+<th><strong>1</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>a[0] [1]</strong></td>
+<td><strong>2</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>a[0] [2]</strong></td>
+<td><strong>3</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>a[1] [0]</strong></td>
+<td><strong>4</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>a[1] [1]</strong></td>
+<td><strong>5</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>a[1] [2]</strong></td>
+<td>6</td>
+</tr>
+</tbody>
+</table>
+<p>也可以理解为</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>[0]</th>
+<th>[1]</th>
+<th>[2]</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>a[0]</strong></td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+</tr>
+<tr>
+<td><strong>a[1]</strong></td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+</tr>
+</tbody>
+</table>
+<p><strong>数组名加行标是该行的行首地址</strong></p>
+<p>a[0] 是第1行行首地址</p>
+<p>a[1] 是第2行行首地址</p>
+<p><strong>数组名是地址常量</strong></p>
+<p>a 等价于 &amp;a[0] [0] 等价于 a[0]</p>
+<p>定义指针二维数组</p>
+<p>数据类型标识符 *数组名[行数]；</p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w">  </span><span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">3</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">};</span>
+<span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">pa</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+</code></pre></div>
+<p>那么该如何指向数组的对应行</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">R</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="w">  </span><span class="n">指针名</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">数组名</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+<span class="c1">// 跟正常指向没什么区别</span>
+</code></pre></div>
+<p><strong>利用等价关系处理数组</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">pa</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="n">j</span><span class="w">     </span><span class="n">等价于</span><span class="w"> </span><span class="o">&amp;</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span>
+<span class="o">*</span><span class="p">(</span><span class="n">pa</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="n">j</span><span class="p">)</span><span class="w">  </span><span class="n">等价于</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span>
+</code></pre></div>
+<p>既然对列进行了操作，那么二维数组中的行可不可以也进行操作，答案还是可以的</p>
+<p>定义行指针并指向首元素</p>
+<div class="highlight"><pre><span></span><code><span class="n">数据类型标识符</span><span class="w">  </span><span class="p">(</span><span class="o">*</span><span class="n">指针名</span><span class="p">)[</span><span class="n">列数</span><span class="p">]</span><span class="err">；</span>
+
+<span class="kt">int</span><span class="w">  </span><span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">3</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">};</span>
+<span class="kt">int</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">pa</span><span class="p">)[</span><span class="mi">3</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">;</span><span class="w"> </span><span class="c1">//指向第1行行首 </span>
+</code></pre></div>
+<p>利用等价关系处理数组</p>
+<div class="highlight"><pre><span></span><code><span class="o">*</span><span class="p">(</span><span class="n">pa</span><span class="o">+</span><span class="n">i</span><span class="p">)</span><span class="o">+</span><span class="n">j</span><span class="w">     </span><span class="n">等价于</span><span class="w"> </span><span class="o">&amp;</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span>
+<span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">pa</span><span class="o">+</span><span class="n">i</span><span class="p">)</span><span class="o">+</span><span class="n">j</span><span class="p">)</span><span class="w">  </span><span class="n">等价于</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span>
+</code></pre></div>
+<p>举个栗子</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 使用指针数组录入和输出数据</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(){</span>
+<span class="w">    </span><span class="kt">int</span><span class="w">  </span><span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">3</span><span class="p">];</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">pa</span><span class="p">)[</span><span class="mi">3</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">;</span><span class="w"> </span><span class="c1">//行指针  </span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">//输入数据</span>
+<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="mi">2</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="w">        </span><span class="k">for</span><span class="p">(</span><span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">j</span><span class="o">&lt;</span><span class="mi">3</span><span class="p">;</span><span class="n">j</span><span class="o">++</span><span class="p">)</span>
+<span class="w">            </span><span class="n">scanf</span><span class="p">(</span><span class="err">“</span><span class="o">%</span><span class="n">d</span><span class="err">”</span><span class="p">,</span><span class="o">*</span><span class="p">(</span><span class="n">pa</span><span class="o">+</span><span class="n">i</span><span class="p">)</span><span class="o">+</span><span class="n">j</span><span class="p">);</span><span class="w"> </span>
+<span class="w">    </span><span class="c1">//输出数据</span>
+<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="mi">2</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
+<span class="w">        </span><span class="k">for</span><span class="p">(</span><span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">j</span><span class="o">&lt;</span><span class="mi">3</span><span class="p">;</span><span class="n">j</span><span class="o">++</span><span class="p">)</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="err">“</span><span class="o">%</span><span class="mi">5</span><span class="n">d</span><span class="err">”</span><span class="p">,</span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">pa</span><span class="o">+</span><span class="n">i</span><span class="p">)</span><span class="o">+</span><span class="n">j</span><span class="p">));</span><span class="w"> </span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="err">“\</span><span class="n">n</span><span class="err">”</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="_6">动态内存分配<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p>这块作为一个对指针的扩展，虽然也得学吧</p>
+<p>你要记住，一旦沾上内存这个玩意，就会伴随一些危险性。有可能内存泄漏，或者不清楚内存，使你的计算机炸掉</p>
+<p><strong>四个动态内存分配函数</strong></p>
+<p>malloc函数</p>
+<ul>
+<li>void *malloc(unsigned int size);</li>
+<li>动态分配size字节的内存空间，返回首地址</li>
+</ul>
+<p>calloc函数</p>
+<ul>
+<li>void *calloc(unsigned int count,unsigned int size);</li>
+<li>动态分配size字节的内存空间count个，返回首地址</li>
+</ul>
+<p>realloc函数</p>
+<ul>
+<li>void <em>realloc(void </em>ptr, unsigned int newSize);</li>
+<li>把ptr指向的内存空间调整为newSize个字节，返回首地址</li>
+</ul>
+<p>free函数</p>
+<ul>
+<li>void free(void *ptr);</li>
+<li>把由ptr指向的内存空间交还给系统</li>
+</ul>
+<p>调用上述函数需包含<stdlib.h>头文件</p>
+<p><strong>动态内存分配处理方法</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 举个栗子</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">){</span>
+<span class="w">    </span><span class="c1">// 定义指针</span>
+<span class="w">    </span><span class="kt">int</span><span class="w">   </span><span class="o">*</span><span class="n">p</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="o">*</span><span class="n">q</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// 令指针指向分配的空间</span>
+<span class="w">    </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span>
+<span class="w">    </span><span class="n">q</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">float</span><span class="p">));</span>
+<span class="w">    </span><span class="c1">// 通过指针处理数据</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;请输入一个整数:  &quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span><span class="n">p</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;请输入一个小数:  &quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%f&quot;</span><span class="p">,</span><span class="n">q</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d*%f=%f</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="o">*</span><span class="n">p</span><span class="p">,</span><span class="o">*</span><span class="n">q</span><span class="p">,</span><span class="o">*</span><span class="n">p</span><span class="o">**</span><span class="n">q</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// 释放空间</span>
+<span class="w">    </span><span class="n">free</span><span class="p">(</span><span class="n">p</span><span class="p">);</span>
+<span class="w">    </span><span class="n">free</span><span class="p">(</span><span class="n">q</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>OK啊家人们，到此呢指针的基础也差不多ok了，学长才疏学浅，也不能对指针进行一个更多的解释，而且如果你不在后续走C/C++路线，这个玩意对你来说是不会用到的(
+学长是机器学习（python）)，所以走其他路线可以不用学。</p>
+<p>至此，第六章指针结束！</p>
+<hr />
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../05array/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 五、数组 Array">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                五、数组 Array
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../07fun/" class="md-footer__link md-footer__link--next" aria-label="下一页: 七、函数 Function">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                七、函数 Function
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "search.suggest", "search.highlight", "search.share", "announce.dismiss", "content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.tooltips", "navigation.footer", "navigation.indexes", "navigation.sections", "navigation.tabs", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.56ea9cef.min.js"></script>
+      
+        <script src="../../static/mfuns-player/standard-player.umd.js"></script>
+      
+    
+  </body>
+</html>

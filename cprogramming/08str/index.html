@@ -1,0 +1,1920 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://uit.kokomi.ltd/wiki/cprogramming/08str/">
+      
+      
+        <link rel="prev" href="../07fun/">
+      
+      
+        <link rel="next" href="../09stru/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
+    
+    
+      
+        <title>八、字符串 String - UIT WIKI</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+  
+    <script defer src="https://analytics.kokomi.ltd/script.js" data-website-id="37c07a74-059a-4d0e-8e65-38be80be4756"></script>
+  
+
+  
+      
+    
+
+
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:300,300i,400,400i,700,700i%7CSource+Code+Pro:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans";--md-code-font:"Source Code Pro"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../static/stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="preference" data-md-color-primary="custom" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="UIT WIKI" class="md-header__button md-logo" aria-label="UIT WIKI" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path d="M17.029 18.772l.777 1.166-5.417 2.709L0 16.451V4.063l5.417-2.709 5.298 7.948 7.867-5.24L24 1.354V16.84l-5.417 2.709-1.554-.777zm2.023-13.827v13.253l3.949-1.975V2.97l-3.949 1.975zM5.076 2.642L1.458 4.45 12.73 21.358l3.618-1.809L5.076 2.642z" />
+</svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            UIT WIKI
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              八、字符串 String
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../.." class="md-tabs__link">
+          
+  
+  
+    
+  
+  简介
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  C语言速通
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../course/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  内部课程
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="UIT WIKI" class="md-nav__button md-logo" aria-label="UIT WIKI" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path d="M17.029 18.772l.777 1.166-5.417 2.709L0 16.451V4.063l5.417-2.709 5.298 7.948 7.867-5.24L24 1.354V16.84l-5.417 2.709-1.554-.777zm2.023-13.827v13.253l3.949-1.975V2.97l-3.949 1.975zM5.076 2.642L1.458 4.45 12.73 21.358l3.618-1.809L5.076 2.642z" />
+</svg>
+
+    </a>
+    UIT WIKI
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../.." class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    简介
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1" id="__nav_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            简介
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../copyright/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    版权声明
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    C语言速通
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            C语言速通
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01basic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    一、基础知识
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02exp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    二、表达式与简单程序设计
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03decision/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    三、分支程序设计
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04loop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    四、循环 Loop
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05array/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    五、数组 Array
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06ptr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    六、指针 Pointer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07fun/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    七、函数 Function
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    八、字符串 String
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    八、字符串 String
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      字符串的存储
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      指针与字符串
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="指针与字符串">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      把字符串常量直接赋给指针
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      用指针指向数组
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      用指针数组指向多个串
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      字符串输入\输出
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="字符串输入\输出">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#scanf" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用scanf函数输入字符串
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gets" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用gets函数输入串
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#printf" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用printf函数输出串
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#puts" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用puts函数输出串
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      例题部分
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      字符串处理函数
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="字符串处理函数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#strlen" class="md-nav__link">
+    <span class="md-ellipsis">
+      strlen函数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#strcpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      strcpy函数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#strcmp" class="md-nav__link">
+    <span class="md-ellipsis">
+      strcmp函数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#strcat" class="md-nav__link">
+    <span class="md-ellipsis">
+      strcat函数
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09stru/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    九、结构体 Structure
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../end/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    完结撒花
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    内部课程
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      字符串的存储
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      指针与字符串
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="指针与字符串">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      把字符串常量直接赋给指针
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      用指针指向数组
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      用指针数组指向多个串
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      字符串输入\输出
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="字符串输入\输出">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#scanf" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用scanf函数输入字符串
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gets" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用gets函数输入串
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#printf" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用printf函数输出串
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#puts" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用puts函数输出串
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      例题部分
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      字符串处理函数
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="字符串处理函数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#strlen" class="md-nav__link">
+    <span class="md-ellipsis">
+      strlen函数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#strcpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      strcpy函数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#strcmp" class="md-nav__link">
+    <span class="md-ellipsis">
+      strcmp函数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#strcat" class="md-nav__link">
+    <span class="md-ellipsis">
+      strcat函数
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>八、字符串 String</h1>
+
+<h2 id="_1">字符串的存储<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>字符串简称串。存放字符串时，是从左往右依次存储字符的，末尾以'\0'结束。</p>
+<p>举例：“Hello”</p>
+<table>
+<thead>
+<tr>
+<th>...</th>
+<th>H</th>
+<th>e</th>
+<th>l</th>
+<th>l</th>
+<th>o</th>
+<th>\0</th>
+<th>...</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>强调以下重要的几点：</p>
+<ol>
+<li>要把含n个字符的字符串存储起来，要申请至少n+1个元素的一个数组，因为需要存储'\0'字符。</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">str1</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">=</span><span class="s">&quot;abc&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">str1</span><span class="p">);</span><span class="c1">//结果：abc </span>
+<span class="w">    </span><span class="cm">/*char str2[3]=&quot;abc&quot;;//报错，因为字符串的存储空间小了 </span>
+<span class="cm">    printf(&quot;%s\n&quot;,str2);*/</span><span class="w"> </span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<ol>
+<li>
+<p>可以使用两种方法把一个串存储到数组中</p>
+</li>
+<li>
+<p>使用字符串常量，格式是：</p>
+</li>
+</ol>
+<p>char 数组名[元素个数]=字符串常量;</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">str1</span><span class="p">[</span><span class="mi">9</span><span class="p">]</span><span class="o">=</span><span class="s">&quot;Good Day&quot;</span><span class="p">;</span><span class="c1">//因为空格也算一个字符所以一个有8个字符，但因为&#39;\0&#39;也需要占1个字符空间，则至少要9个元素</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">str2</span><span class="p">[]</span><span class="o">=</span><span class="s">&quot;Good Day&quot;</span><span class="p">;</span><span class="c1">//元素个数可以省略</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">str3</span><span class="p">[</span><span class="mi">11</span><span class="p">]</span><span class="o">=</span><span class="s">&quot;Good Day&quot;</span><span class="p">;</span><span class="c1">//元素个数可以比字符多，但是不能比字符少</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">str1</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">str2</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">str3</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w"> </span><span class="p">}</span><span class="w"> </span>
+</code></pre></div>
+<p>str1,str2,str3的存储方式依次如下：</p>
+<table>
+<thead>
+<tr>
+<th>G</th>
+<th>o</th>
+<th>o</th>
+<th>d</th>
+<th></th>
+<th>d</th>
+<th>a</th>
+<th>y</th>
+<th>\0</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>G</th>
+<th>o</th>
+<th>o</th>
+<th>d</th>
+<th></th>
+<th>d</th>
+<th>a</th>
+<th>y</th>
+<th>\0</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>G</th>
+<th>o</th>
+<th>o</th>
+<th>d</th>
+<th></th>
+<th>d</th>
+<th>a</th>
+<th>y</th>
+<th>\0</th>
+<th>?</th>
+<th>?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>使用字符常量，格式是：</li>
+</ul>
+<p>char 数组名[元素个数]={字符常量列表};</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">str1</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="o">=</span><span class="p">{</span><span class="sc">&#39;H&#39;</span><span class="p">,</span><span class="sc">&#39;e&#39;</span><span class="p">,</span><span class="sc">&#39;l&#39;</span><span class="p">,</span><span class="sc">&#39;l&#39;</span><span class="p">,</span><span class="sc">&#39;o&#39;</span><span class="p">,</span><span class="sc">&#39;\0&#39;</span><span class="p">};</span><span class="c1">//因为&#39;\0&#39;也需要占1个字符空间，则至少要6个元素</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">str2</span><span class="p">[]</span><span class="o">=</span><span class="p">{</span><span class="sc">&#39;H&#39;</span><span class="p">,</span><span class="sc">&#39;e&#39;</span><span class="p">,</span><span class="sc">&#39;l&#39;</span><span class="p">,</span><span class="sc">&#39;l&#39;</span><span class="p">,</span><span class="sc">&#39;o&#39;</span><span class="p">,</span><span class="sc">&#39;\0&#39;</span><span class="p">};</span><span class="c1">//元素个数可以省略</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">str3</span><span class="p">[</span><span class="mi">11</span><span class="p">]</span><span class="o">=</span><span class="p">{</span><span class="sc">&#39;H&#39;</span><span class="p">,</span><span class="sc">&#39;e&#39;</span><span class="p">,</span><span class="sc">&#39;l&#39;</span><span class="p">,</span><span class="sc">&#39;l&#39;</span><span class="p">,</span><span class="sc">&#39;o&#39;</span><span class="p">,</span><span class="sc">&#39;\0&#39;</span><span class="p">};</span><span class="c1">//元素个数可以比字符多，但是不能比字符少</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">str1</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">str2</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">str3</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w"> </span><span class="p">}</span><span class="w"> </span>
+</code></pre></div>
+<p>上面程序语句中实现了把字符串"Hello"存储到字符型的数组中，要注意，使用字符常量时最后一个字符必须是'\0'。</p>
+<h2 id="_2">指针与字符串<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>既然字符串存储在字符型数组中，当然也可以用前面的方法指针来处理字符串。</p>
+<h3 id="_3">把字符串常量直接赋给指针<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>一个字符串常量的值是该字符串首字符在内存中的地址。因此，可以直接把一个字符串常量赋给字符型的指针。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">ps</span><span class="o">=</span><span class="s">&quot;Good day&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">ps</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w"> </span><span class="p">}</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="_4">用指针指向数组<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>字符串存储到数组后，可以用指针指向数组，然后通过指针来处理串。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">s</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span><span class="o">=</span><span class="s">&quot;Good day&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">ps</span><span class="o">=</span><span class="n">s</span><span class="p">;</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">ps</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w"> </span><span class="p">}</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="_5">用指针数组指向多个串<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>可以用指针数组指向多个串。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">ps</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">=</span><span class="p">{</span><span class="s">&quot;wangli&quot;</span><span class="p">,</span><span class="s">&quot;sunli&quot;</span><span class="p">,</span><span class="s">&quot;zhaona&quot;</span><span class="p">};</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">ps</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">ps</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">ps</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w"> </span><span class="p">}</span><span class="w"> </span>
+</code></pre></div>
+<h2 id="_6">字符串输入\输出<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p>我们经常使用的输入scanf和输出printf，其实也可以用字符串专门的输入gets和输出puts来输入输出字符串。它们都包含在头文件stdio.h中。</p>
+<h3 id="scanf">使用scanf函数输入字符串<a class="headerlink" href="#scanf" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>格式：scanf("%s",数组名);</p>
+</li>
+<li>
+<p>作用：将用户从键盘上输入的字符序列以字符串的形式存储到数组中。</p>
+</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">name</span><span class="p">[</span><span class="mi">20</span><span class="p">];</span>
+<span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%s&quot;</span><span class="p">,</span><span class="n">name</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s&quot;</span><span class="p">,</span><span class="n">name</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w"> </span><span class="p">}</span><span class="w"> </span>
+</code></pre></div>
+<ol>
+<li>弊端：scanf中输入的字符串中不能出现空格或Tab</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">name</span><span class="p">[</span><span class="mi">20</span><span class="p">];</span>
+<span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%s&quot;</span><span class="p">,</span><span class="n">name</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s&quot;</span><span class="p">,</span><span class="n">name</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w"> </span><span class="p">}</span><span class="w"> </span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1">//输入 </span>
+<span class="n">zhangsan</span>
+<span class="c1">//输出</span>
+<span class="n">zhangsan</span>
+</code></pre></div>
+<p>这种情况是输入的时候不含有空格和Tab。</p>
+<div class="highlight"><pre><span></span><code><span class="c1">//输入 </span>
+<span class="n">zhang</span><span class="w">   </span><span class="n">san</span>
+<span class="c1">//输出</span>
+<span class="n">zhang</span>
+</code></pre></div>
+<p>这种情况是输入含有Tab，会导致Tab之后的字符不能出现。</p>
+<div class="highlight"><pre><span></span><code><span class="c1">//输入 </span>
+<span class="n">zhang</span><span class="w"> </span><span class="n">san</span>
+<span class="c1">//输出</span>
+<span class="n">zhang</span>
+</code></pre></div>
+<p>这种情况是含有空格的，它与Tab一样，空格之后的字符不在出现。</p>
+<h3 id="gets">使用gets函数输入串<a class="headerlink" href="#gets" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>格式：gets(数组名);</p>
+</li>
+<li>
+<p>作用：将用户从键盘上输入的字符序列以字符串的形式存储到数组中。</p>
+</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">name</span><span class="p">[</span><span class="mi">20</span><span class="p">];</span>
+<span class="w">    </span><span class="n">gets</span><span class="p">(</span><span class="n">name</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s&quot;</span><span class="p">,</span><span class="n">name</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w"> </span><span class="p">}</span><span class="w"> </span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1">//输入 </span>
+<span class="n">zhang</span><span class="w"> </span><span class="n">san</span>
+<span class="c1">//输出</span>
+<span class="n">zhang</span><span class="w"> </span><span class="n">san</span>
+</code></pre></div>
+<p>这个时候空白也能出现在屏幕上了。</p>
+<p><strong>总结</strong>与scanf函数不同的是gets函数可以录入空白字符。</p>
+<h3 id="printf">使用printf函数输出串<a class="headerlink" href="#printf" title="Permanent link">&para;</a></h3>
+<p>（1）格式： printf("%s",地址);</p>
+<p>（2）作用：将指定地址开始的字符串输出到屏幕。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">str</span><span class="p">[</span><span class="mi">20</span><span class="p">]</span><span class="o">=</span><span class="s">&quot;abcdef123&quot;</span><span class="p">;</span><span class="w"> </span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">str</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">str</span><span class="o">+</span><span class="mi">4</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">str</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w"> </span><span class="p">}</span><span class="w"> </span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1">//输出</span>
+<span class="n">abcdef123</span>
+<span class="n">ef123</span>
+<span class="n">cde123</span>
+</code></pre></div>
+<p><strong>强调</strong>字符串在内存中既然是以空字符（\0）结束字符序列，因此就可以使用%c来控制输出一个字符串。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">str</span><span class="p">[</span><span class="mi">20</span><span class="p">]</span><span class="o">=</span><span class="s">&quot;abcdef123&quot;</span><span class="p">;</span><span class="w"> </span>
+<span class="w">    </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">ps</span><span class="o">=</span><span class="n">str</span><span class="p">;</span>
+<span class="w">    </span><span class="k">while</span><span class="p">(</span><span class="o">*</span><span class="n">ps</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%c&quot;</span><span class="p">,</span><span class="o">*</span><span class="n">ps</span><span class="o">++</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w"> </span><span class="p">}</span><span class="w"> </span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1">//输出</span>
+<span class="n">abcdef123</span>
+</code></pre></div>
+<h3 id="puts">使用puts函数输出串<a class="headerlink" href="#puts" title="Permanent link">&para;</a></h3>
+<p>（1）格式：puts(地址);</p>
+<p>（2）作用：将指定地址开始的字符串输出到屏幕后换行。puts函数的这条语句结束直接换行。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">str</span><span class="p">[</span><span class="mi">20</span><span class="p">]</span><span class="o">=</span><span class="s">&quot;abcdef123&quot;</span><span class="p">;</span><span class="w"> </span>
+<span class="w">    </span><span class="n">puts</span><span class="p">(</span><span class="n">str</span><span class="p">);</span>
+<span class="w">    </span><span class="n">puts</span><span class="p">(</span><span class="n">str</span><span class="o">+</span><span class="mi">4</span><span class="p">);</span>
+<span class="w">    </span><span class="n">puts</span><span class="p">(</span><span class="o">&amp;</span><span class="n">str</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w"> </span><span class="p">}</span><span class="w"> </span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1">//输出</span>
+<span class="n">abcdef123</span>
+<span class="n">ef123</span>
+<span class="n">cde123</span>
+</code></pre></div>
+<h3 id="_7">例题部分<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p>1：输入一个字符串，把其中的大写字母转换为小写字母后输出。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">s</span><span class="p">[</span><span class="mi">1000</span><span class="p">];</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;请输入一个字符串：&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%s&quot;</span><span class="p">,</span><span class="n">s</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;刚刚输入的字符串是什么：%s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">s</span><span class="p">);</span>
+<span class="w">    </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="k">while</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">!=</span><span class="sc">&#39;\0&#39;</span><span class="p">)</span><span class="c1">//因为字符串是以&#39;\0&#39;结束，所以这句话作为结束循环的标志</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">&gt;=</span><span class="sc">&#39;A&#39;</span><span class="o">&amp;&amp;</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">&lt;=</span><span class="sc">&#39;Z&#39;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+=</span><span class="sc">&#39;a&#39;</span><span class="o">-</span><span class="sc">&#39;A&#39;</span><span class="p">;</span><span class="c1">//这个语句的意思是大写字母转换为小写字母，此处使用ASCII码表大写字母与小写字母的差值</span>
+<span class="w">            </span><span class="c1">//可以替换成s[i]+=32;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">i</span><span class="o">++</span><span class="p">;</span><span class="c1">//将下标向后移动一位</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;最终的字符串为：%s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">s</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1">// 最终结果</span>
+<span class="n">请输入一个字符串</span><span class="err">：</span><span class="n">ABC</span>
+<span class="nl">刚刚输入的字符串是什么</span><span class="p">:</span><span class="w"> </span><span class="n">ABC</span>
+<span class="nl">最终的字符串为</span><span class="p">:</span><span class="w"> </span><span class="n">abc</span>
+</code></pre></div>
+<p>2：输入一个字符串，把其中的空格字符删除后输出</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">s</span><span class="p">[</span><span class="mi">1000</span><span class="p">];</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">k</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;请输入一个字符串：&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">gets</span><span class="p">(</span><span class="n">s</span><span class="p">);</span><span class="c1">//这里不用scanf的原因是因为这道题需要输入空格，gets可以接收空格，但是gets不可以接收空格 </span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;刚刚输入的字符串是：%s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">s</span><span class="p">);</span>
+<span class="w">    </span><span class="k">while</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">!=</span><span class="sc">&#39;\0&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">!=</span><span class="sc">&#39; &#39;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">s</span><span class="p">[</span><span class="n">k</span><span class="o">++</span><span class="p">]</span><span class="o">=</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">];</span><span class="c1">//这句话的意思是，如果是s[i]不是空格，将s[i]中字符赋值给s[k],然后k++;</span>
+<span class="w">            </span><span class="c1">//上面那句话可以写成两句，即：</span>
+<span class="w">            </span><span class="c1">//s[k]=s[i];</span>
+<span class="w">            </span><span class="c1">//k++; </span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">i</span><span class="o">++</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span>
+<span class="w">    </span><span class="n">s</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">=</span><span class="sc">&#39;\0&#39;</span><span class="p">;</span><span class="c1">//最后字符串要以&#39;\0&#39;结束这个语句</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;最终字符串为：&quot;</span><span class="p">);</span><span class="c1">//其实这句加下面那句可以改成printf(&quot;最终字符串为：%s\n&quot;,s);结果都是一样的 </span>
+<span class="w">    </span><span class="n">puts</span><span class="p">(</span><span class="n">s</span><span class="p">);</span><span class="w"> </span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1">// 最终结果</span>
+<span class="n">请输入一个字符串</span><span class="err">：</span><span class="n">abc</span><span class="w"> </span><span class="mi">123</span>
+<span class="nl">刚刚输入的字符串是什么</span><span class="p">:</span><span class="w"> </span><span class="n">abc</span><span class="w"> </span><span class="mi">123</span>
+<span class="nl">最终的字符串为</span><span class="p">:</span><span class="w"> </span><span class="n">abc123</span>
+</code></pre></div>
+<p>例题3：输入月份号码（1~12），输出对应月份的英文名字（法一）</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">monName</span><span class="p">[</span><span class="mi">13</span><span class="p">]</span><span class="o">=</span><span class="p">{</span><span class="s">&quot; &quot;</span><span class="p">,</span><span class="s">&quot;January&quot;</span><span class="p">,</span><span class="s">&quot;Febrary&quot;</span><span class="p">,</span><span class="s">&quot;March&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">&quot;April&quot;</span><span class="p">,</span><span class="s">&quot;May&quot;</span><span class="p">,</span><span class="s">&quot;June&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">&quot;July&quot;</span><span class="p">,</span><span class="s">&quot;August&quot;</span><span class="p">,</span><span class="s">&quot;September&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">&quot;October&quot;</span><span class="p">,</span><span class="s">&quot;November&quot;</span><span class="p">,</span><span class="s">&quot;December&quot;</span><span class="p">};</span><span class="c1">//第一个为空字符是因为数组的下标总是从0开始 ，这个其实也可以用二维数组写，看完下面的例题4和例题5应该先思考以下吧！在例题5后面会给出答案</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">monN</span><span class="p">;</span>
+<span class="w">    </span><span class="k">do</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;请输入一个月号(1-12)：&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">monN</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span><span class="k">while</span><span class="p">(</span><span class="n">monN</span><span class="o">&lt;</span><span class="mi">1</span><span class="o">||</span><span class="n">monN</span><span class="o">&gt;</span><span class="mi">12</span><span class="p">);</span><span class="c1">//如果输入的月份不在1~12月，那么就会一直执行这条语句 </span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">月份是%d月，月份名是%s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">monN</span><span class="p">,</span><span class="n">monName</span><span class="p">[</span><span class="n">monN</span><span class="p">]);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w"> </span><span class="p">}</span><span class="w"> </span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">请输入一个月号</span><span class="err">（</span><span class="mi">1-12</span><span class="err">）：</span><span class="mi">0</span>
+<span class="n">请输入一个月号</span><span class="err">（</span><span class="mi">1-12</span><span class="err">）：</span><span class="mi">13</span>
+<span class="n">请输入一个月号</span><span class="err">（</span><span class="mi">1-12</span><span class="err">）：</span><span class="mi">-1</span>
+<span class="n">请输入一个月号</span><span class="err">（</span><span class="mi">1-12</span><span class="err">）：</span><span class="mi">1</span>
+
+<span class="n">月份是1月</span><span class="err">，</span><span class="n">月份名是January</span>
+</code></pre></div>
+<p>例题4：定义一个数组存储5个学生的名字并进行遍历</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">//字符串的底层就是字符数组</span>
+<span class="w">    </span><span class="c1">//把多个字符数组再放到一个大数组当中</span>
+<span class="w">    </span><span class="c1">//二维数组</span>
+<span class="w">    </span><span class="c1">//1.定义一个二维数组，存储多个学生的名字</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">strarr</span><span class="p">[</span><span class="mi">5</span><span class="p">][</span><span class="mi">100</span><span class="p">]</span><span class="o">=</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="s">&quot;zhangsan&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">&quot;lisi&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">&quot;wangwu&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">&quot;zhaoliu&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">&quot;qianqi&quot;</span>
+<span class="w">     </span><span class="p">};</span>
+<span class="w">     </span><span class="c1">//2.遍历二维数组</span>
+<span class="w">     </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="mi">5</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span>
+<span class="w">     </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">//依次表示二维数组中的每一个索引</span>
+<span class="w">         </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">str</span><span class="o">=</span><span class="n">strarr</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+<span class="w">         </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">str</span><span class="p">);</span><span class="w"> </span>
+<span class="w">     </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1">// 输出</span>
+<span class="n">zhangsan</span>
+<span class="n">lisi</span>
+<span class="n">wangwu</span>
+<span class="n">zhaoliu</span>
+<span class="n">qianqi</span>
+</code></pre></div>
+<p>例题5：输入5个国家的英文名字，按每行一个输出</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">couName</span><span class="p">[</span><span class="mi">5</span><span class="p">][</span><span class="mi">20</span><span class="p">];</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="mi">5</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;请输入一个国家的姓名：&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%s&quot;</span><span class="p">,</span><span class="n">couName</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="mi">5</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">puts</span><span class="p">(</span><span class="n">couName</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span><span class="c1">//这里题目说了按每一行一个输出所以用puts，当然也可以用printf记得加\n就可以了</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w"> </span><span class="p">}</span><span class="w"> </span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1">// 控制台输出</span>
+<span class="n">请输入一个国家的姓名</span><span class="err">：</span><span class="n">china</span>
+<span class="n">请输入一个国家的姓名</span><span class="err">：</span><span class="n">japan</span>
+<span class="n">请输入一个国家的姓名</span><span class="err">：</span><span class="n">russia</span>
+<span class="n">请输入一个国家的姓名</span><span class="err">：</span><span class="n">austrilia</span>
+<span class="n">请输入一个国家的姓名</span><span class="err">：</span><span class="n">france</span>
+<span class="n">china</span>
+<span class="n">japan</span>
+<span class="n">russia</span>
+<span class="n">austrilia</span>
+<span class="n">france</span>
+</code></pre></div>
+<p>例题3补充：输入月份号码（1~12），输出对应月份的英文名字（法二）</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="kt">char</span><span class="w"> </span><span class="n">monName</span><span class="p">[</span><span class="mi">13</span><span class="p">][</span><span class="mi">20</span><span class="p">]</span><span class="o">=</span><span class="p">{</span><span class="s">&quot; &quot;</span><span class="p">,</span><span class="s">&quot;January&quot;</span><span class="p">,</span><span class="s">&quot;Febrary&quot;</span><span class="p">,</span><span class="s">&quot;March&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">&quot;April&quot;</span><span class="p">,</span><span class="s">&quot;May&quot;</span><span class="p">,</span><span class="s">&quot;June&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">&quot;July&quot;</span><span class="p">,</span><span class="s">&quot;August&quot;</span><span class="p">,</span><span class="s">&quot;September&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">&quot;October&quot;</span><span class="p">,</span><span class="s">&quot;November&quot;</span><span class="p">,</span><span class="s">&quot;December&quot;</span><span class="p">};</span><span class="c1">//第一个为空字符是因为数组的下标总是从0开始 </span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">monN</span><span class="p">;</span>
+<span class="w">    </span><span class="k">do</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;请输入一个月号(1-12)：&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">monN</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span><span class="k">while</span><span class="p">(</span><span class="n">monN</span><span class="o">&lt;</span><span class="mi">1</span><span class="o">||</span><span class="n">monN</span><span class="o">&gt;</span><span class="mi">12</span><span class="p">);</span><span class="c1">//如果输入的月份不在1~12月，那么就会一直执行这条语句 </span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">月份是%d月，月份名是%s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">monN</span><span class="p">,</span><span class="n">monName</span><span class="p">[</span><span class="n">monN</span><span class="p">]);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w"> </span><span class="p">}</span><span class="w"> </span>
+</code></pre></div>
+<h2 id="_8">字符串处理函数<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<p>字符串不是标准数据类型，对串的操作需要借助库函数完成。
+C语言提供了丰富的字符串处理函数。所有函数的原型包含在string.h中，函数的名字有一个共同的特点——一般都含有前缀str,如strcpy、strcmp等。在这里将介绍几个常用的串处理函数。</p>
+<h3 id="strlen">strlen函数<a class="headerlink" href="#strlen" title="Permanent link">&para;</a></h3>
+<p>（1）函数原型:    int strlen(const char*string)</p>
+<p>（2）函数功能： 返回参数string所指向串的长度，即除空格字符外的字符个数。</p>
+<p>如：char s[ ]="Hello";</p>
+<p>则下列函数调用的结果是：</p>
+<p>strlen(s)            结果是：5</p>
+<p>strlen(s+2)        结果是：3</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="cp">#include</span><span class="cpf">&lt;string.h&gt;</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">s</span><span class="p">[</span><span class="mi">81</span><span class="p">];</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;输入一个字符串：&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">gets</span><span class="p">(</span><span class="n">s</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;字符串是：%s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">s</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;长度是：%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">strlen</span><span class="p">(</span><span class="n">s</span><span class="p">));</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">输入一个字符串</span><span class="err">：</span><span class="n">abc1123</span>
+<span class="n">字符串是</span><span class="err">：</span><span class="n">abc1123</span>
+<span class="nl">长度是</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span>
+</code></pre></div>
+<ol>
+<li>从键盘输入一个字符串，输出这个串和它的逆串（如“abc”的逆串是“cba”）；</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="cp">#include</span><span class="cpf">&lt;string.h&gt;</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">s</span><span class="p">[</span><span class="mi">81</span><span class="p">];</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">temp</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;输入一个字符串：&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">gets</span><span class="p">(</span><span class="n">s</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;字符串是：%s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">s</span><span class="p">);</span>
+<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">n</span><span class="o">=</span><span class="n">strlen</span><span class="p">(</span><span class="n">s</span><span class="p">);</span><span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">temp</span><span class="o">=</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+<span class="w">        </span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">s</span><span class="p">[</span><span class="n">n</span><span class="o">-</span><span class="n">i</span><span class="mi">-1</span><span class="p">];</span>
+<span class="w">        </span><span class="n">s</span><span class="p">[</span><span class="n">n</span><span class="o">-</span><span class="n">i</span><span class="mi">-1</span><span class="p">]</span><span class="o">=</span><span class="n">temp</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span><span class="c1">//i指向字符串的第一个字符，n指向字符串的最后一个字符 </span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;逆串是：%s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">s</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">输入一个字符串</span><span class="err">：</span><span class="n">abc1123</span>
+<span class="n">字符串是</span><span class="err">：</span><span class="n">abc1123</span>
+<span class="nl">逆串是</span><span class="p">:</span><span class="w"> </span><span class="mi">321</span><span class="n">cba</span>
+</code></pre></div>
+<h3 id="strcpy">strcpy函数<a class="headerlink" href="#strcpy" title="Permanent link">&para;</a></h3>
+<p>（1）函数原型： char<em>  strcpy(char</em> to_string,const char* from_string);</p>
+<p>（2）函数功能： 用来把from_string（源串）的字符串连同‘\0’一起复制到to_string（目标串）中的字符串。若有以下定义：</p>
+<p>char s1[20];
+ char s2[ ]="C language";
+ char*  p="World";</p>
+<p>则下面的语句都是合法的：</p>
+<p>strcpy(s1,"Hello"); 则s1的内容为串"Hello"
+ strcpy(s1,p); 则s1的内容为串"World"
+ strcpy(s1,s2+2); 则s1的内容为串"language"</p>
+<p>（3）注意事项：第一个参数to_string一定是字符型数组，且长度要足够大。如果源串大于目标串，与目标串相邻的后方内存数据将被破坏，这是很危险的。</p>
+<h3 id="strcmp">strcmp函数<a class="headerlink" href="#strcmp" title="Permanent link">&para;</a></h3>
+<p>（1）函数原型： int strcmp(const char<em>  string1,const char</em> string2);</p>
+<p>（2）函数功能： 比较两个参数指向的字符串的大小，返回一个整数。</p>
+<p>若string1&gt;string2，返回值为1.</p>
+<p>若string1=string2，返回值为0.</p>
+<p>若string1&lt;string2，返回值为-1.</p>
+<p>下列表中将举一些例子：</p>
+<table>
+<thead>
+<tr>
+<th>string1</th>
+<th>string2</th>
+<th>比较结果</th>
+<th>函数返回值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>"ABC123"</td>
+<td>"ABC123"</td>
+<td>string1等于string2</td>
+<td>0</td>
+</tr>
+<tr>
+<td>"ABC123"</td>
+<td>"ABC456"</td>
+<td>string1小于string2</td>
+<td>&lt;0</td>
+</tr>
+<tr>
+<td>"ABC"</td>
+<td>"ABC123"</td>
+<td>string1小于string2</td>
+<td>&lt;0</td>
+</tr>
+<tr>
+<td>"ABC123"</td>
+<td>"ABC"</td>
+<td>string2大于string2</td>
+<td>&gt;0</td>
+</tr>
+</tbody>
+</table>
+<p>（3）注意事项：两个字符串比较时，是从头到尾依次比较对应位置字符的ASCII码值的大小，结果一旦确定就停止。两个串只有长度相同且每个位置的字符也相同才是相等关系。</p>
+<p>例题2：从键盘上输入5个国家的名字，使用冒泡法按降序排列后输出：</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="cp">#include</span><span class="cpf">&lt;string.h&gt;</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">strName</span><span class="p">[</span><span class="mi">5</span><span class="p">][</span><span class="mi">20</span><span class="p">];</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">temp</span><span class="p">[</span><span class="mi">20</span><span class="p">];</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">k</span><span class="p">;</span>
+<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="mi">5</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;输入一个国家的名字：&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">gets</span><span class="p">(</span><span class="n">strName</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+<span class="w">    </span><span class="p">}</span><span class="c1">//这个循环是把5个国家的名字输出 </span>
+<span class="w">    </span><span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="mi">4</span><span class="o">&amp;&amp;</span><span class="n">k</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">for</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">j</span><span class="o">=</span><span class="mi">4</span><span class="p">;</span><span class="n">j</span><span class="o">&gt;</span><span class="n">i</span><span class="p">;</span><span class="n">j</span><span class="o">--</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="k">if</span><span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">strName</span><span class="p">[</span><span class="n">j</span><span class="p">],</span><span class="n">strName</span><span class="p">[</span><span class="n">j</span><span class="mi">-1</span><span class="p">])</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="n">strcpy</span><span class="p">(</span><span class="n">temp</span><span class="p">,</span><span class="n">strName</span><span class="p">[</span><span class="n">j</span><span class="p">]);</span>
+<span class="w">                </span><span class="n">strcpy</span><span class="p">(</span><span class="n">strName</span><span class="p">[</span><span class="n">j</span><span class="p">],</span><span class="n">strName</span><span class="p">[</span><span class="n">j</span><span class="mi">-1</span><span class="p">]);</span>
+<span class="w">                </span><span class="n">strcpy</span><span class="p">(</span><span class="n">strName</span><span class="p">[</span><span class="n">j</span><span class="mi">-1</span><span class="p">],</span><span class="n">temp</span><span class="p">);</span>
+<span class="w">                </span><span class="n">k</span><span class="o">++</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span><span class="c1">//基本的冒泡排序 </span>
+<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="mi">5</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">puts</span><span class="p">(</span><span class="n">strName</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+<span class="w">    </span><span class="p">}</span><span class="c1">//把冒泡排好的国家全部输出 </span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w"> </span><span class="p">}</span><span class="w"> </span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1">// 控制台输出</span>
+<span class="n">请输入一个国家的姓名</span><span class="err">：</span><span class="n">china</span>
+<span class="n">请输入一个国家的姓名</span><span class="err">：</span><span class="n">japan</span>
+<span class="n">请输入一个国家的姓名</span><span class="err">：</span><span class="n">russia</span>
+<span class="n">请输入一个国家的姓名</span><span class="err">：</span><span class="n">austrilia</span>
+<span class="n">请输入一个国家的姓名</span><span class="err">：</span><span class="n">france</span>
+<span class="n">russia</span>
+<span class="n">japan</span>
+<span class="n">france</span>
+<span class="n">china</span>
+<span class="n">austrilia</span>
+</code></pre></div>
+<h3 id="strcat">strcat函数<a class="headerlink" href="#strcat" title="Permanent link">&para;</a></h3>
+<p>（1）函数原型： char<em> strcat(char</em> string1,char* string2);</p>
+<p>（2）函数功能 ： 把string2连接到string1的后面生成一个新串</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="cp">#include</span><span class="cpf">&lt;string.h&gt;</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">s1</span><span class="p">[</span><span class="mi">20</span><span class="p">]</span><span class="o">=</span><span class="s">&quot;123&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">s2</span><span class="p">[</span><span class="w"> </span><span class="p">]</span><span class="o">=</span><span class="s">&quot;C language&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">p</span><span class="o">=</span><span class="s">&quot;World&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">strcat</span><span class="p">(</span><span class="n">s1</span><span class="p">,</span><span class="s">&quot;Hello&quot;</span><span class="p">));</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">strcat</span><span class="p">(</span><span class="n">s1</span><span class="p">,</span><span class="n">p</span><span class="p">));</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">strcat</span><span class="p">(</span><span class="n">s1</span><span class="p">,</span><span class="n">s2</span><span class="o">+</span><span class="mi">2</span><span class="p">));</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w"> </span><span class="p">}</span><span class="w"> </span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1">//输出</span>
+<span class="mi">123</span><span class="n">Hello</span>
+<span class="mi">123</span><span class="n">HelloWorld</span>
+<span class="mi">123</span><span class="n">HelloWorldlanguage</span>
+</code></pre></div>
+<p>（3）注意事项：第一个参数string1一定是字符型数组，且长度要足够大。</p>
+<p>strcpy和strcat的区别是strcpy是，strcpy将源串复制到目标串，而strcat是将string2拼接到string1中。</p>
+<p>至此，第七章完结</p>
+<hr />
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../07fun/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 七、函数 Function">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                七、函数 Function
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../09stru/" class="md-footer__link md-footer__link--next" aria-label="下一页: 九、结构体 Structure">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                九、结构体 Structure
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "search.suggest", "search.highlight", "search.share", "announce.dismiss", "content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.tooltips", "navigation.footer", "navigation.indexes", "navigation.sections", "navigation.tabs", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.56ea9cef.min.js"></script>
+      
+        <script src="../../static/mfuns-player/standard-player.umd.js"></script>
+      
+    
+  </body>
+</html>

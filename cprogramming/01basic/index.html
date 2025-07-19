@@ -1,0 +1,2245 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://uit.kokomi.ltd/wiki/cprogramming/01basic/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../02exp/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
+    
+    
+      
+        <title>一、基础知识 - UIT WIKI</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+  
+    <script defer src="https://analytics.kokomi.ltd/script.js" data-website-id="37c07a74-059a-4d0e-8e65-38be80be4756"></script>
+  
+
+  
+      
+    
+
+
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:300,300i,400,400i,700,700i%7CSource+Code+Pro:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans";--md-code-font:"Source Code Pro"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../static/stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="preference" data-md-color-primary="custom" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#c" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="UIT WIKI" class="md-header__button md-logo" aria-label="UIT WIKI" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path d="M17.029 18.772l.777 1.166-5.417 2.709L0 16.451V4.063l5.417-2.709 5.298 7.948 7.867-5.24L24 1.354V16.84l-5.417 2.709-1.554-.777zm2.023-13.827v13.253l3.949-1.975V2.97l-3.949 1.975zM5.076 2.642L1.458 4.45 12.73 21.358l3.618-1.809L5.076 2.642z" />
+</svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            UIT WIKI
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              一、基础知识
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../.." class="md-tabs__link">
+          
+  
+  
+    
+  
+  简介
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  C语言速通
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../course/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  内部课程
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="UIT WIKI" class="md-nav__button md-logo" aria-label="UIT WIKI" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path d="M17.029 18.772l.777 1.166-5.417 2.709L0 16.451V4.063l5.417-2.709 5.298 7.948 7.867-5.24L24 1.354V16.84l-5.417 2.709-1.554-.777zm2.023-13.827v13.253l3.949-1.975V2.97l-3.949 1.975zM5.076 2.642L1.458 4.45 12.73 21.358l3.618-1.809L5.076 2.642z" />
+</svg>
+
+    </a>
+    UIT WIKI
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../.." class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    简介
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1" id="__nav_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            简介
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../copyright/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    版权声明
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    C语言速通
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            C语言速通
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    一、基础知识
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    一、基础知识
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#c" class="md-nav__link">
+    <span class="md-ellipsis">
+      C程序结构
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="C程序结构">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#main" class="md-nav__link">
+    <span class="md-ellipsis">
+      main函数结构
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      C程序中的语句
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      C程序中的注释
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      C程序中的预处理命令
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      标识符
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="标识符">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      基本字符集
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      32保留字
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      预保留字
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      用户自定义标识符
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      数据类型
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="数据类型">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      标准数据类型
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      变量
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="变量">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      变量的定义
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      变量的初始化
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      常量
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="常量">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      常量类型
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      整型常量
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      浮点型常量
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      字符常量
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ascll" class="md-nav__link">
+    <span class="md-ellipsis">
+      ASCLL码表
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      字符串常量
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      符号常量
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      输入输出控制
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="输入输出控制">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      输出函数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      输入函数
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02exp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    二、表达式与简单程序设计
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03decision/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    三、分支程序设计
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04loop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    四、循环 Loop
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05array/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    五、数组 Array
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06ptr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    六、指针 Pointer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07fun/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    七、函数 Function
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08str/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    八、字符串 String
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09stru/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    九、结构体 Structure
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../end/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    完结撒花
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    内部课程
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#c" class="md-nav__link">
+    <span class="md-ellipsis">
+      C程序结构
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="C程序结构">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#main" class="md-nav__link">
+    <span class="md-ellipsis">
+      main函数结构
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      C程序中的语句
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      C程序中的注释
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      C程序中的预处理命令
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      标识符
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="标识符">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      基本字符集
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      32保留字
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      预保留字
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      用户自定义标识符
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      数据类型
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="数据类型">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      标准数据类型
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      变量
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="变量">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      变量的定义
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      变量的初始化
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      常量
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="常量">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      常量类型
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      整型常量
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      浮点型常量
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      字符常量
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ascll" class="md-nav__link">
+    <span class="md-ellipsis">
+      ASCLL码表
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      字符串常量
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      符号常量
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      输入输出控制
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="输入输出控制">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      输出函数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      输入函数
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>一、基础知识</h1>
+
+<p>对于基础知识的讲解，在此文章并不会阐述详细精准的概念理论，一切以代码实操和个人理解为主。</p>
+<h2 id="c">C程序结构<a class="headerlink" href="#c" title="Permanent link">&para;</a></h2>
+<h3 id="main">main函数结构<a class="headerlink" href="#main" title="Permanent link">&para;</a></h3>
+<p>对于C语言来说必不可少的就是主函数，主函数一般有固定的格式来编写:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">){</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;你好uit&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>分析上述代码</strong></p>
+<ol>
+<li>第一行是每一个C语言程序<strong>必须</strong>书写的代码，<code>#include&lt;&gt;</code> 可以理解为导入某某官方头文件，上述的 <code>stdio.h</code> 就是C语言的基础头文件，是每个C语言程序必须导入的文件。而有的代码会写 <code>#include""</code>，双引号和尖括号的区别就在于，使用双引号是导入自定义头文件，即自己编写的头文件，而尖括号是导入官方自带的头文件。</li>
+<li>第二行的格式是main函数的固定格式，<strong>括号中的void可以不写</strong>，到后续函数章节会在详解，前面的int在后续也是可以改变的，感兴趣可以自行搜索学习，这里不多赘述。</li>
+<li>第三行是C语言的输出语句，使用方法会在之后介绍，在此做一个演示功能。</li>
+<li>第四行是主函数(main函数)的结束语句，可以不写，后续会在函数章节详解。</li>
+</ol>
+<p><strong>注意</strong>：任何一个C程序必须有且只能有一个名字为main的函数。</p>
+<h3 id="c_1">C程序中的语句<a class="headerlink" href="#c_1" title="Permanent link">&para;</a></h3>
+<p>在上述代码块可以看到，main函数内每句代码的尾部都有 分号 " ; "</p>
+<p>在C语言中的语句以 <strong>分号 “ ; ”</strong> 结束（注意为英文分号）</p>
+<h3 id="c_2">C程序中的注释<a class="headerlink" href="#c_2" title="Permanent link">&para;</a></h3>
+<p>注释的目的在于增强程序的可读性，即可以在代码内编写内容且不被编译，多用于备注代码作用解析等。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="cpf">&lt;stdio.h&gt;</span><span class="c1"> // 这是导入头文件</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">){</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;你好uit&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// 这是输出</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cm">/*</span>
+<span class="cm">欢迎来到uit</span>
+<span class="cm">*/</span>
+</code></pre></div>
+<p>在上述代码我们可以看到注释符号，/<em> 和  </em>/一对，或者 //。</p>
+<p>一对的注释可以跨行注释，即在符号中间随意注释。而 // 只能单行注释。</p>
+<p>注释在编译时被删除，不参与编译。</p>
+<h3 id="c_3">C程序中的预处理命令<a class="headerlink" href="#c_3" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="cpf">&lt;stdio.h&gt;</span><span class="c1">   </span>
+<span class="cp">#define PI 3.1415926</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">){</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">l</span><span class="p">,</span><span class="n">s</span><span class="p">;</span>
+<span class="w">    </span><span class="n">l</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">PI</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">r</span><span class="p">;</span>
+<span class="w">    </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PI</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">r</span><span class="p">;</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;周长是：%f，面积是：%f</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">l</span><span class="p">,</span><span class="n">s</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<p>此代码的作用是计算半径为5的圆的周长与面积，我们可以发现上面有一段没有见过的代码 <code>#define PI 3.1415926</code></p>
+<p>这段代码为预处理命令</p>
+<ol>
+<li>预处理命令都以<code>#</code>开头，一行一条命令</li>
+<li><code>#define</code> 是预定义命令，功能是定义一个符号常量</li>
+<li>预处理命令不是语句，末尾不可以加分号</li>
+<li>预处理命令在原程序被编译成机器码之前被系统自行处理</li>
+</ol>
+<h2 id="_1">标识符<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h3 id="_2">基本字符集<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>在C语言中能够被系统识别，可以作为语法符号的字符共91个：</p>
+<p><strong>大小写字母各26个</strong>，<strong>阿拉伯数字10个</strong>，<strong>特殊字符29个</strong></p>
+<h3 id="32">32保留字<a class="headerlink" href="#32" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><strong>const</strong></th>
+<th style="text-align: center;">continue</th>
+<th style="text-align: center;">default</th>
+<th style="text-align: center;">do</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>double</strong></td>
+<td style="text-align: center;"><strong>else</strong></td>
+<td style="text-align: center;"><strong>enum</strong></td>
+<td style="text-align: center;"><strong>extern</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>float</strong></td>
+<td style="text-align: center;"><strong>for</strong></td>
+<td style="text-align: center;"><strong>goto</strong></td>
+<td style="text-align: center;"><strong>if</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>int</strong></td>
+<td style="text-align: center;"><strong>long</strong></td>
+<td style="text-align: center;"><strong>register</strong></td>
+<td style="text-align: center;"><strong>return</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>short</strong></td>
+<td style="text-align: center;"><strong>signed</strong></td>
+<td style="text-align: center;"><strong>sizeof</strong></td>
+<td style="text-align: center;"><strong>static</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>struct</strong></td>
+<td style="text-align: center;"><strong>switch</strong></td>
+<td style="text-align: center;"><strong>typedef</strong></td>
+<td style="text-align: center;"><strong>union</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>unsinged</strong></td>
+<td style="text-align: center;"><strong>void</strong></td>
+<td style="text-align: center;"><strong>volatile</strong></td>
+<td style="text-align: center;"><strong>while</strong></td>
+</tr>
+</tbody>
+</table>
+<p>保留字是C语言内部专用的32个符号，它们都是小写的英文单词或缩写，保留字的名字不可更改，也不可被定义</p>
+<h3 id="_3">预保留字<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<ol>
+<li>用来表示预处理命令名（比如include）和系统库函数名（比如printf）</li>
+<li>不提倡再作他用</li>
+</ol>
+<h3 id="_4">用户自定义标识符<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>用户根据一定规则自己命名的符号</p>
+<p><strong>命名规则</strong></p>
+<ol>
+<li><strong>必须以字母或下划线开头</strong></li>
+<li><strong>只能由字母、数字和下划线组成</strong></li>
+<li><strong>不能与保留字同名</strong></li>
+</ol>
+<p><strong>好的建议：</strong></p>
+<p>1.尽量使用<strong>有意义</strong>的<strong>英文</strong>单词，这样的程序更容易读</p>
+<p>2.多个单词时，单词之间最好隔开</p>
+<p>有两种方法：</p>
+<p>一是单词间用<strong>下划线</strong>隔开</p>
+<p>如：student_name</p>
+<p>二是第一个之后的单词<strong>首字母大写</strong></p>
+<p>如：studentName</p>
+<p>提倡使用<strong>第二种方法</strong></p>
+<h2 id="_5">数据类型<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>在C语言中，有的时候程序是分析不出你要输入的是什么类型，比如：“1400.0”，你可以认为他是一个小数形式，因为有小数点，也可以认为他是字符串形式，因为是由一个个字符拼起来的，为了避免这种歧义，数据类型就尤为重要。</p>
+<h3 id="_6">标准数据类型<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p><strong>四种标准类型</strong></p>
+<ol>
+<li>空类型： 关键字是void</li>
+<li>整数类型：用来存整数</li>
+<li>浮点类型：用来存小数</li>
+<li>字符类型：用来存汉字和英文字符</li>
+</ol>
+<p><strong>整数类型</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">类型</th>
+<th style="text-align: center;">符号</th>
+<th style="text-align: center;">取值范围（左）</th>
+<th style="text-align: center;">取值范围（右）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">短整数</td>
+<td style="text-align: center;">short</td>
+<td style="text-align: center;">-32768</td>
+<td style="text-align: center;">32768</td>
+</tr>
+<tr>
+<td style="text-align: center;">整数</td>
+<td style="text-align: center;">int</td>
+<td style="text-align: center;">-2147483678</td>
+<td style="text-align: center;">2147483678</td>
+</tr>
+<tr>
+<td style="text-align: center;">无符号短整数</td>
+<td style="text-align: center;">unsigned short</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">65535</td>
+</tr>
+<tr>
+<td style="text-align: center;">无符号整数</td>
+<td style="text-align: center;">unsigned int</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">4294967295</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>包括<strong>int</strong>和<strong>short</strong>两种</li>
+<li>用<strong>unsigned</strong>说明无符号</li>
+<li>无符号不能存负数</li>
+</ol>
+<p><strong>浮点类型</strong></p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>符号</th>
+<th>取值范围（左）</th>
+<th>取值范围（右）</th>
+<th>有效位数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>单精度</td>
+<td>float</td>
+<td><span class="arithmatex"><span class="MathJax_Preview">-3.4 \times 10^{-38}</span><script type="math/tex">-3.4 \times 10^{-38}</script></span></td>
+<td><span class="arithmatex"><span class="MathJax_Preview">3.4 \times 10^{38}</span><script type="math/tex">3.4 \times 10^{38}</script></span></td>
+<td>6-7位</td>
+</tr>
+<tr>
+<td>双精度</td>
+<td>double</td>
+<td><span class="arithmatex"><span class="MathJax_Preview">-1.7 \times 10^{-308}</span><script type="math/tex">-1.7 \times 10^{-308}</script></span></td>
+<td><span class="arithmatex"><span class="MathJax_Preview">1.7 \times 10^{308}</span><script type="math/tex">1.7 \times 10^{308}</script></span></td>
+<td>15-16位</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>包括<strong>float</strong>和<strong>double</strong>两种</li>
+<li>它们都是有符号数</li>
+</ol>
+<p><strong>字符类型</strong></p>
+<p>关键字是<strong>char</strong>，用来存汉字和英文字符</p>
+<h2 id="_7">变量<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<h3 id="_8">变量的定义<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<p><strong>1.定义的含义</strong></p>
+<p>就是为要存储的数据指定类型和名字</p>
+<p><strong>2.定义的格式</strong></p>
+<p>数据类型关键字 变量名1，变量名2，…，变量名n；</p>
+<p>三个例子：</p>
+<div class="highlight"><pre><span></span><code><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w">   </span><span class="n">xh</span><span class="p">;</span>
+
+<span class="kt">unsigned</span><span class="w"> </span><span class="kt">short</span><span class="w"> </span><span class="n">age</span><span class="p">;</span>
+
+<span class="kt">float</span><span class="w">        </span><span class="n">score</span><span class="p">;</span>
+
+<span class="c1">// 第一条语句定义了名字为xh ，用来存学号，是无符号整数类型，因为没有负</span>
+<span class="c1">// 第一条语句定义了名字为age的一个变量，用来存年龄，因为它的值不大且是没有负数，所以定义为无符号短整数类型</span>
+<span class="c1">// 第三条语句定义了名字为score的一个变量，用来存成绩，因为它的值不大，所以定义为float类型</span>
+</code></pre></div>
+<p><strong>注意</strong></p>
+<ol>
+<li>变量名的命名需要符合用户定义标识符的规则</li>
+<li>数据类型的确定以够用为原则</li>
+<li>一条语句可以定义多个变量，变量名之间用逗号隔开</li>
+<li>最好用一条语句定义一个变量，这样的程序容易读</li>
+</ol>
+<h3 id="_9">变量的初始化<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<p><strong>1.初始化的含义</strong></p>
+<p>就是在定义变量的同时使用等号（=）为其赋初值</p>
+<p><strong>2.初始化的格式</strong></p>
+<p>数据类型关键字 变量名1 = 值1，…，变量名n = 值n；</p>
+<p>三个例子：</p>
+<div class="highlight"><pre><span></span><code><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w">    </span><span class="n">xh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">201211001L</span><span class="p">;</span>
+
+<span class="kt">unsigned</span><span class="w"> </span><span class="kt">short</span><span class="w">  </span><span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">18</span><span class="p">;</span>
+
+<span class="kt">float</span><span class="w">           </span><span class="n">score</span><span class="w"> </span><span class="o">=</span><span class="mf">543.5</span><span class="p">;</span>
+
+<span class="c1">//若不对变量初始化，它的值是不确定的。</span>
+</code></pre></div>
+<p>通常变量的定义离不开标识符命名规则，而且在实际操作的时候，尽量将变量写成自己认识的单词或字母代号，切勿重复命名和臃肿命名如：x,xx,xxx,xxxx。</p>
+<h2 id="_10">常量<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
+<ol>
+<li>在程序中值不发生变化的量</li>
+<li>常量包括字面常量和符号常量，前者可以直接写在程序中使用， 后者需要先定义后使用</li>
+</ol>
+<p>与变量不同的是，常量在定义时就已经确定具体数值并且不在后续程序中改变。</p>
+<h3 id="_11">常量类型<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<p>可以直接写在程序里的常量</p>
+<p>包括：</p>
+<ol>
+<li>整型</li>
+<li>浮点型</li>
+<li>字符型</li>
+<li>字符串型</li>
+</ol>
+<h3 id="_12">整型常量<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<p>整型常量有三种形式表示：十进制，八进制，十六进制</p>
+<p><strong>十进制</strong>：</p>
+<p>最左边一位==不能为== <strong>0</strong>，每位由 <strong>0-9 </strong>组成，数字前面用+表示正，-表示负</p>
+<p>如：1534，-678，+1200</p>
+<p><strong>八进制:</strong></p>
+<p>最左边一位==为== <strong>0</strong> ，每位由<strong>0-7</strong>组成，数字前面用+表示正，-表示负</p>
+<p>如：015，-023，+012</p>
+<p><strong>十六进制：</strong></p>
+<p>最左边为<strong>0x</strong>或<strong>0X</strong>（注意：这里是数字0不是字母o），每位由<strong>0-9 a-f</strong>（或<strong>A-F</strong>）组成，数字前面用+表示正，-表示负</p>
+<p>如：0x15，-0x2a，+0X1F</p>
+<h3 id="_13">浮点型常量<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<p>浮点型常量有两种形式表示：一般形式和指数形式</p>
+<p><strong>一般形式：</strong></p>
+<p>整数部分后跟小数点后跟小数部分，数字前面用+表示正，-表示负</p>
+<p>如：1.25，-3.22，+0.15</p>
+<p><strong>指数形式：</strong></p>
+<p>尾数部分后跟字母e（或E）后跟指数部分，数字前面用+表示正，-表示负，指数部分必须为整数</p>
+<p>如：1.25e+2，-3.22E-2，+1.5E3</p>
+<h3 id="_14">字符常量<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<ol>
+<li>用一对<strong>单引号</strong>括起来的<strong>一个字符</strong> 如：‘a’，‘+’</li>
+<li>基本英文字符有<strong>128</strong>个</li>
+<li>用0-127的整数进行编号，叫做ASCII码</li>
+<li>字符和ASCII码的对应关系表叫做ASCII码表</li>
+</ol>
+<h3 id="ascll">ASCLL码表<a class="headerlink" href="#ascll" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><strong>ASCII值</strong></th>
+<th style="text-align: center;"><strong>控制字符</strong></th>
+<th style="text-align: center;"><strong>ASCII值</strong></th>
+<th style="text-align: center;"><strong>控制字符</strong></th>
+<th style="text-align: center;"><strong>ASCII值</strong></th>
+<th style="text-align: center;"><strong>控制字符</strong></th>
+<th style="text-align: center;"><strong>ASCII值</strong></th>
+<th style="text-align: center;"><strong>控制字符</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">NUL</td>
+<td style="text-align: center;">32</td>
+<td style="text-align: center;">(space)</td>
+<td style="text-align: center;">64</td>
+<td style="text-align: center;">@</td>
+<td style="text-align: center;">96</td>
+<td style="text-align: center;">、</td>
+</tr>
+<tr>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">SOH</td>
+<td style="text-align: center;">33</td>
+<td style="text-align: center;">！</td>
+<td style="text-align: center;">65</td>
+<td style="text-align: center;">A</td>
+<td style="text-align: center;">97</td>
+<td style="text-align: center;">a</td>
+</tr>
+<tr>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">STX</td>
+<td style="text-align: center;">34</td>
+<td style="text-align: center;">”</td>
+<td style="text-align: center;">66</td>
+<td style="text-align: center;">B</td>
+<td style="text-align: center;">98</td>
+<td style="text-align: center;">b</td>
+</tr>
+<tr>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">ETX</td>
+<td style="text-align: center;">35</td>
+<td style="text-align: center;">#</td>
+<td style="text-align: center;">67</td>
+<td style="text-align: center;">C</td>
+<td style="text-align: center;">99</td>
+<td style="text-align: center;">c</td>
+</tr>
+<tr>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">EOT</td>
+<td style="text-align: center;">36</td>
+<td style="text-align: center;">$</td>
+<td style="text-align: center;">68</td>
+<td style="text-align: center;">D</td>
+<td style="text-align: center;">100</td>
+<td style="text-align: center;">d</td>
+</tr>
+<tr>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">ENQ</td>
+<td style="text-align: center;">37</td>
+<td style="text-align: center;">%</td>
+<td style="text-align: center;">69</td>
+<td style="text-align: center;">E</td>
+<td style="text-align: center;">101</td>
+<td style="text-align: center;">e</td>
+</tr>
+<tr>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">ACK</td>
+<td style="text-align: center;">38</td>
+<td style="text-align: center;">&amp;</td>
+<td style="text-align: center;">70</td>
+<td style="text-align: center;">F</td>
+<td style="text-align: center;">102</td>
+<td style="text-align: center;">f</td>
+</tr>
+<tr>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">BEL</td>
+<td style="text-align: center;">39</td>
+<td style="text-align: center;">'</td>
+<td style="text-align: center;">71</td>
+<td style="text-align: center;">G</td>
+<td style="text-align: center;">103</td>
+<td style="text-align: center;">g</td>
+</tr>
+<tr>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">BS</td>
+<td style="text-align: center;">40</td>
+<td style="text-align: center;">(</td>
+<td style="text-align: center;">72</td>
+<td style="text-align: center;">H</td>
+<td style="text-align: center;">104</td>
+<td style="text-align: center;">h</td>
+</tr>
+<tr>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">HT</td>
+<td style="text-align: center;">41</td>
+<td style="text-align: center;">)</td>
+<td style="text-align: center;">73</td>
+<td style="text-align: center;">I</td>
+<td style="text-align: center;">105</td>
+<td style="text-align: center;">i</td>
+</tr>
+<tr>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">LF</td>
+<td style="text-align: center;">42</td>
+<td style="text-align: center;">*</td>
+<td style="text-align: center;">74</td>
+<td style="text-align: center;">J</td>
+<td style="text-align: center;">106</td>
+<td style="text-align: center;">j</td>
+</tr>
+<tr>
+<td style="text-align: center;">11</td>
+<td style="text-align: center;">VT</td>
+<td style="text-align: center;">43</td>
+<td style="text-align: center;">+</td>
+<td style="text-align: center;">75</td>
+<td style="text-align: center;">K</td>
+<td style="text-align: center;">107</td>
+<td style="text-align: center;">k</td>
+</tr>
+<tr>
+<td style="text-align: center;">12</td>
+<td style="text-align: center;">FF</td>
+<td style="text-align: center;">44</td>
+<td style="text-align: center;">,</td>
+<td style="text-align: center;">76</td>
+<td style="text-align: center;">L</td>
+<td style="text-align: center;">108</td>
+<td style="text-align: center;">l</td>
+</tr>
+<tr>
+<td style="text-align: center;">13</td>
+<td style="text-align: center;">CR</td>
+<td style="text-align: center;">45</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">77</td>
+<td style="text-align: center;">M</td>
+<td style="text-align: center;">109</td>
+<td style="text-align: center;">m</td>
+</tr>
+<tr>
+<td style="text-align: center;">14</td>
+<td style="text-align: center;">SO</td>
+<td style="text-align: center;">46</td>
+<td style="text-align: center;">.</td>
+<td style="text-align: center;">78</td>
+<td style="text-align: center;">N</td>
+<td style="text-align: center;">110</td>
+<td style="text-align: center;">n</td>
+</tr>
+<tr>
+<td style="text-align: center;">15</td>
+<td style="text-align: center;">SI</td>
+<td style="text-align: center;">47</td>
+<td style="text-align: center;">/</td>
+<td style="text-align: center;">79</td>
+<td style="text-align: center;">O</td>
+<td style="text-align: center;">111</td>
+<td style="text-align: center;">o</td>
+</tr>
+<tr>
+<td style="text-align: center;">16</td>
+<td style="text-align: center;">DLE</td>
+<td style="text-align: center;">48</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">80</td>
+<td style="text-align: center;">P</td>
+<td style="text-align: center;">112</td>
+<td style="text-align: center;">p</td>
+</tr>
+<tr>
+<td style="text-align: center;">17</td>
+<td style="text-align: center;">DCI</td>
+<td style="text-align: center;">49</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">81</td>
+<td style="text-align: center;">Q</td>
+<td style="text-align: center;">113</td>
+<td style="text-align: center;">q</td>
+</tr>
+<tr>
+<td style="text-align: center;">18</td>
+<td style="text-align: center;">DC2</td>
+<td style="text-align: center;">50</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">82</td>
+<td style="text-align: center;">R</td>
+<td style="text-align: center;">114</td>
+<td style="text-align: center;">r</td>
+</tr>
+<tr>
+<td style="text-align: center;">19</td>
+<td style="text-align: center;">DC3</td>
+<td style="text-align: center;">51</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">83</td>
+<td style="text-align: center;">S</td>
+<td style="text-align: center;">115</td>
+<td style="text-align: center;">s</td>
+</tr>
+<tr>
+<td style="text-align: center;">20</td>
+<td style="text-align: center;">DC4</td>
+<td style="text-align: center;">52</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">84</td>
+<td style="text-align: center;">T</td>
+<td style="text-align: center;">116</td>
+<td style="text-align: center;">t</td>
+</tr>
+<tr>
+<td style="text-align: center;">21</td>
+<td style="text-align: center;">NAK</td>
+<td style="text-align: center;">53</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">85</td>
+<td style="text-align: center;">U</td>
+<td style="text-align: center;">117</td>
+<td style="text-align: center;">u</td>
+</tr>
+<tr>
+<td style="text-align: center;">22</td>
+<td style="text-align: center;">SYN</td>
+<td style="text-align: center;">54</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">86</td>
+<td style="text-align: center;">V</td>
+<td style="text-align: center;">118</td>
+<td style="text-align: center;">v</td>
+</tr>
+<tr>
+<td style="text-align: center;">23</td>
+<td style="text-align: center;">TB</td>
+<td style="text-align: center;">55</td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">87</td>
+<td style="text-align: center;">W</td>
+<td style="text-align: center;">119</td>
+<td style="text-align: center;">w</td>
+</tr>
+<tr>
+<td style="text-align: center;">24</td>
+<td style="text-align: center;">CAN</td>
+<td style="text-align: center;">56</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">88</td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;">120</td>
+<td style="text-align: center;">x</td>
+</tr>
+<tr>
+<td style="text-align: center;">25</td>
+<td style="text-align: center;">EM</td>
+<td style="text-align: center;">57</td>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">89</td>
+<td style="text-align: center;">Y</td>
+<td style="text-align: center;">121</td>
+<td style="text-align: center;">y</td>
+</tr>
+<tr>
+<td style="text-align: center;">26</td>
+<td style="text-align: center;">SUB</td>
+<td style="text-align: center;">58</td>
+<td style="text-align: center;">:</td>
+<td style="text-align: center;">90</td>
+<td style="text-align: center;">Z</td>
+<td style="text-align: center;">122</td>
+<td style="text-align: center;">z</td>
+</tr>
+<tr>
+<td style="text-align: center;">27</td>
+<td style="text-align: center;">ESC</td>
+<td style="text-align: center;">59</td>
+<td style="text-align: center;">;</td>
+<td style="text-align: center;">91</td>
+<td style="text-align: center;">[</td>
+<td style="text-align: center;">123</td>
+<td style="text-align: center;">{</td>
+</tr>
+<tr>
+<td style="text-align: center;">28</td>
+<td style="text-align: center;">FS</td>
+<td style="text-align: center;">60</td>
+<td style="text-align: center;">&lt;</td>
+<td style="text-align: center;">92</td>
+<td style="text-align: center;">\</td>
+<td style="text-align: center;">124</td>
+<td style="text-align: center;">|</td>
+</tr>
+<tr>
+<td style="text-align: center;">29</td>
+<td style="text-align: center;">GS</td>
+<td style="text-align: center;">61</td>
+<td style="text-align: center;">=</td>
+<td style="text-align: center;">93</td>
+<td style="text-align: center;">]</td>
+<td style="text-align: center;">125</td>
+<td style="text-align: center;">}</td>
+</tr>
+<tr>
+<td style="text-align: center;">30</td>
+<td style="text-align: center;">RS</td>
+<td style="text-align: center;">62</td>
+<td style="text-align: center;">&gt;</td>
+<td style="text-align: center;">94</td>
+<td style="text-align: center;">^</td>
+<td style="text-align: center;">126</td>
+<td style="text-align: center;">~</td>
+</tr>
+<tr>
+<td style="text-align: center;">31</td>
+<td style="text-align: center;">US</td>
+<td style="text-align: center;">63</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">95</td>
+<td style="text-align: center;">—</td>
+<td style="text-align: center;">127</td>
+<td style="text-align: center;">DEL</td>
+</tr>
+</tbody>
+</table>
+<p>对于ascll码表来讲，需要掌握的并不多，一般在程序中无法写出来的字符可以使用ascll码表</p>
+<p>那无法写出的字符常量也可以用转义字符来写出，用 <strong> </strong> 后跟一个能写出来的字符表示</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">表示</th>
+<th style="text-align: center;">代表的字符及含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">\0</td>
+<td style="text-align: center;">null字符</td>
+</tr>
+<tr>
+<td style="text-align: center;">\a</td>
+<td style="text-align: center;">BEL字符</td>
+</tr>
+<tr>
+<td style="text-align: center;">\b</td>
+<td style="text-align: center;">退格字符 Backspace</td>
+</tr>
+<tr>
+<td style="text-align: center;">\t</td>
+<td style="text-align: center;">水平制表 TAB</td>
+</tr>
+<tr>
+<td style="text-align: center;">\n</td>
+<td style="text-align: center;">回车换行</td>
+</tr>
+<tr>
+<td style="text-align: center;">\v</td>
+<td style="text-align: center;">垂直制表</td>
+</tr>
+<tr>
+<td style="text-align: center;">\f</td>
+<td style="text-align: center;">换页</td>
+</tr>
+<tr>
+<td style="text-align: center;">\r</td>
+<td style="text-align: center;">回行首</td>
+</tr>
+<tr>
+<td style="text-align: center;"> '</td>
+<td style="text-align: center;">单引号</td>
+</tr>
+<tr>
+<td style="text-align: center;"> "</td>
+<td style="text-align: center;">双引号</td>
+</tr>
+<tr>
+<td style="text-align: center;"> \</td>
+<td style="text-align: center;">反斜杠</td>
+</tr>
+</tbody>
+</table>
+<p>使用的通用格式为：</p>
+<p>用\后跟该字符的八进制ASCII码</p>
+<p>用\x后跟该字符的十六进制ASCII码</p>
+<h3 id="_15">字符串常量<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
+<p>1）使用一对双引号 <code>""</code> 括起来的0个或多个字符（可以包括汉字） 如：</p>
+<ul>
+<li><code>""</code></li>
+<li><code>"UIT"</code></li>
+<li><code>"C语言程序设计"</code></li>
+</ul>
+<p>2）不含任何字符的叫做空串</p>
+<h3 id="_16">符号常量<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
+<ol>
+<li>符号常量使用#define命令来定义</li>
+<li>符号常量定义格式</li>
+<li><strong><code>#define</code></strong>  <strong>符号</strong>  <strong>内容</strong> 举例：<code>#define M 2</code>,<code>#define PI 3.14159</code></li>
+<li>符号常量定义以后，就可以在后面的程序中使用它</li>
+<li>符号名一般采用大写字母，变量名一般采用小写</li>
+</ol>
+<h2 id="_17">输入输出控制<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h2>
+<p>对于C语言来说，printf函数代表输出，scnaf函数代表输入；</p>
+<p>使用前必须要包含stdio.h文件！！！</p>
+<h3 id="_18">输出函数<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
+<p>使用的格式：</p>
+<p>printf("<strong>格式串</strong>"，<strong>输出项列表</strong>);</p>
+<p><strong>格式串</strong>： 指定输出数据的格式</p>
+<p><strong>输出项列表</strong>：指定输出的对象,之间用逗号分开</p>
+<p><strong>格式转换码</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">符号</th>
+<th style="text-align: center;">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">%d</td>
+<td style="text-align: center;">输出整数(int)</td>
+</tr>
+<tr>
+<td style="text-align: center;">%ld</td>
+<td style="text-align: center;">输出整数(long)</td>
+</tr>
+<tr>
+<td style="text-align: center;">%f</td>
+<td style="text-align: center;">输出小数(float)</td>
+</tr>
+<tr>
+<td style="text-align: center;">%lf</td>
+<td style="text-align: center;">输出小数(double)</td>
+</tr>
+<tr>
+<td style="text-align: center;">%c</td>
+<td style="text-align: center;">输出单个字符(char)</td>
+</tr>
+<tr>
+<td style="text-align: center;">%s</td>
+<td style="text-align: center;">输出字符串(char [])</td>
+</tr>
+</tbody>
+</table>
+<p><strong>注意：</strong>使用%f输出小数时默认输出小数点后6位，不足6位时补0</p>
+<h3 id="_19">输入函数<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
+<p>使用的格式：</p>
+<p>scanf("<strong>格式串</strong>"，<strong>变量地址列表</strong>);</p>
+<p>为了更好的演示，接下来将以代码讲解为主</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(){</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">c1</span><span class="p">,</span><span class="n">c2</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// 对于输入来说</span>
+<span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">x</span><span class="p">);</span><span class="w"> </span><span class="c1">// 只需要你找准你想输入的是哪个变量，就在哪个变量前加取地址符 &amp; ，然后前面配套对应的格式转换码</span>
+<span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%f&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">y</span><span class="p">);</span>
+<span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d %f&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">y</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// 注意 变量名前一定不要忘记写&amp;符号</span>
+<span class="w">    </span><span class="cm">/*</span>
+<span class="cm">    数字类型之间连写或用空白字符隔开时</span>
+<span class="cm">    输入数据之间可以使用空白字符分开</span>
+<span class="cm">    空白字符：包括空格、TAB、回车</span>
+<span class="cm">    这一段你可能看着比较迷惑，可以上机实际操作</span>
+<span class="cm">    */</span>
+
+<span class="w">    </span><span class="c1">//数字类型之间用其他字符隔开时,输入数据之间必须使用这个字符分开</span>
+<span class="w">    </span><span class="c1">// 例如</span>
+<span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d,%f&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">y</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// 那么在控制台输入的时候就必须输入 199,60 用逗号分开，其他符号同理</span>
+
+<span class="w">    </span><span class="c1">//字符类型之间或字符与数字类型之间不能有空白字符</span>
+<span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%c%c&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">c1</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">c2</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">//若要输入c1，c2为a，b时，必须输入 ab，中间不能有空白字符</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>对于 getchar函数 和 putchar函数 以及 格式化输出 在此不过多表述，感兴趣自行搜索。</p>
+<p>至此第一章基础知识结束。</p>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="上一页: 引言">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                引言
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../02exp/" class="md-footer__link md-footer__link--next" aria-label="下一页: 二、表达式与简单程序设计">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                二、表达式与简单程序设计
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "search.suggest", "search.highlight", "search.share", "announce.dismiss", "content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.tooltips", "navigation.footer", "navigation.indexes", "navigation.sections", "navigation.tabs", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.56ea9cef.min.js"></script>
+      
+        <script src="../../static/mfuns-player/standard-player.umd.js"></script>
+      
+    
+  </body>
+</html>

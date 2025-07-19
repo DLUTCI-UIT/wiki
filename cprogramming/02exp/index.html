@@ -1,0 +1,1713 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://uit.kokomi.ltd/wiki/cprogramming/02exp/">
+      
+      
+        <link rel="prev" href="../01basic/">
+      
+      
+        <link rel="next" href="../03decision/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
+    
+    
+      
+        <title>二、表达式与简单程序设计 - UIT WIKI</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+  
+    <script defer src="https://analytics.kokomi.ltd/script.js" data-website-id="37c07a74-059a-4d0e-8e65-38be80be4756"></script>
+  
+
+  
+      
+    
+
+
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:300,300i,400,400i,700,700i%7CSource+Code+Pro:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans";--md-code-font:"Source Code Pro"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../static/stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="preference" data-md-color-primary="custom" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="UIT WIKI" class="md-header__button md-logo" aria-label="UIT WIKI" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path d="M17.029 18.772l.777 1.166-5.417 2.709L0 16.451V4.063l5.417-2.709 5.298 7.948 7.867-5.24L24 1.354V16.84l-5.417 2.709-1.554-.777zm2.023-13.827v13.253l3.949-1.975V2.97l-3.949 1.975zM5.076 2.642L1.458 4.45 12.73 21.358l3.618-1.809L5.076 2.642z" />
+</svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            UIT WIKI
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              二、表达式与简单程序设计
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../.." class="md-tabs__link">
+          
+  
+  
+    
+  
+  简介
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  C语言速通
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../course/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  内部课程
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="UIT WIKI" class="md-nav__button md-logo" aria-label="UIT WIKI" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path d="M17.029 18.772l.777 1.166-5.417 2.709L0 16.451V4.063l5.417-2.709 5.298 7.948 7.867-5.24L24 1.354V16.84l-5.417 2.709-1.554-.777zm2.023-13.827v13.253l3.949-1.975V2.97l-3.949 1.975zM5.076 2.642L1.458 4.45 12.73 21.358l3.618-1.809L5.076 2.642z" />
+</svg>
+
+    </a>
+    UIT WIKI
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../.." class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    简介
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1" id="__nav_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            简介
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../copyright/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    版权声明
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    C语言速通
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            C语言速通
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01basic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    一、基础知识
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    二、表达式与简单程序设计
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    二、表达式与简单程序设计
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      表达式
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="表达式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      操作符和操作数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      运算符优先级
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      赋值运算符
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      后缀表达式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      一元表达式
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      副作用
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      语句
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="语句">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      表达式语句
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      复合语句
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      部分库函数
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="部分库函数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      数学函数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      标准库函数
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      程序设计基础知识
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      三种基本结构
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03decision/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    三、分支程序设计
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04loop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    四、循环 Loop
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05array/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    五、数组 Array
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06ptr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    六、指针 Pointer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07fun/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    七、函数 Function
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08str/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    八、字符串 String
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09stru/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    九、结构体 Structure
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../end/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    完结撒花
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    内部课程
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      表达式
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="表达式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      操作符和操作数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      运算符优先级
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      赋值运算符
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      后缀表达式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      一元表达式
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      副作用
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      语句
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="语句">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      表达式语句
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      复合语句
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      部分库函数
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="部分库函数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      数学函数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      标准库函数
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      程序设计基础知识
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      三种基本结构
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>二、表达式与简单程序设计</h1>
+
+<p>对于表达式和简单程序设计的讲解，此文章主要会以一些简单案例来引入，案例中将囊括基本的理论和术语，最后会简要介绍简单程序设计的原理和方法。</p>
+<h2 id="_1">表达式<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h3 id="_2">操作符和操作数<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>在C语言中，表达式是由操作符和操作数而形成的式子</p>
+<p><strong>操作符</strong>   执行某种操作的语法符号，又称运算符 C语言中的操作符多数同于大家熟悉的数学运算符号 如表示相乘的符号“ * ”
+表示相加的符号“ + ”</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">四则运算</th>
+<th style="text-align: center;">C语言运算符</th>
+<th style="text-align: center;">意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">+</td>
+<td style="text-align: center;">+</td>
+<td style="text-align: center;">加</td>
+</tr>
+<tr>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">减</td>
+</tr>
+<tr>
+<td style="text-align: center;">×</td>
+<td style="text-align: center;">*</td>
+<td style="text-align: center;">乘</td>
+</tr>
+<tr>
+<td style="text-align: center;">÷</td>
+<td style="text-align: center;">/</td>
+<td style="text-align: center;">除</td>
+</tr>
+<tr>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">%</td>
+<td style="text-align: center;">取余</td>
+</tr>
+<tr>
+<td style="text-align: center;">()</td>
+<td style="text-align: center;">()</td>
+<td style="text-align: center;">括号</td>
+</tr>
+</tbody>
+</table>
+<p>注：" % "符号是取余数 即9%6=3</p>
+<p>对于大于等于以及小于等于比较的符号略有不同，但也仅是将两个符号进行简单组合</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">比较运算</th>
+<th style="text-align: center;">C语言运算符</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">大于</td>
+<td style="text-align: center;">&gt;</td>
+</tr>
+<tr>
+<td style="text-align: center;">小于</td>
+<td style="text-align: center;">&lt;</td>
+</tr>
+<tr>
+<td style="text-align: center;">等于</td>
+<td style="text-align: center;">==</td>
+</tr>
+<tr>
+<td style="text-align: center;">大于等于</td>
+<td style="text-align: center;">&gt;=</td>
+</tr>
+<tr>
+<td style="text-align: center;">小于等于</td>
+<td style="text-align: center;">&lt;=</td>
+</tr>
+</tbody>
+</table>
+<p><strong>操作数</strong>  执行操作的对象，一个运算符可以有一个或多个操作数</p>
+<div class="highlight"><pre><span></span><code><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<span class="mi">8</span><span class="o">+</span><span class="mi">5</span><span class="p">;</span>
+<span class="sc">&#39;A&#39;</span><span class="p">;</span>
+</code></pre></div>
+<p>//对于上面的代码
+//第一行的“ a " " b " " 3 " 均为操作数，“ + ” “ = ” 为操作符
+//第二行的“ + ”为操作符 “ 8 ” “ 5 ”为操作数</p>
+<p>C语言中，根据操作符和操作数的数量和位置的不同，划分出7钟不同类型的表达式，在此不做一一展示，具体的分类可查阅资料</p>
+<p>我们可以以一个简单的找零计算器程序进行演示</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(){</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">myYuan</span><span class="p">,</span><span class="n">myJiao</span><span class="p">;</span><span class="c1">// 现金的元单位数和角单位数</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">waresYuan</span><span class="p">,</span><span class="n">waresJiao</span><span class="p">;</span><span class="c1">//商品售价的元单位数 角单位数</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;please enter two numbers: &quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d%d&quot;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">myYuan</span><span class="p">,</span><span class="o">&amp;</span><span class="n">myJiao</span><span class="p">);</span><span class="c1">//输入现金</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;please enter two numbers: &quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d%d&quot;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">waresYuan</span><span class="p">,</span><span class="o">&amp;</span><span class="n">waresJiao</span><span class="p">);</span><span class="c1">//输入商品价格</span>
+
+<span class="w">    </span><span class="c1">//思考一下，如果这件商品的价格是1元8角，手中的现金数是2元5角</span>
+<span class="w">    </span><span class="c1">//如果直接分别减就会出现角借位的情况</span>
+<span class="w">    </span><span class="c1">//为了解决错位的问题，我们当然可以统一单位进行相减</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">t1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">myYuan</span><span class="o">*</span><span class="mi">10</span><span class="o">+</span><span class="n">myJiao</span><span class="p">;</span><span class="c1">//将手中现金转化为角单位</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">t2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">waresYuan</span><span class="o">*</span><span class="mi">10</span><span class="o">+</span><span class="n">waresJiao</span><span class="p">;</span><span class="c1">//将商品价格化为角单位</span>
+
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">t2</span><span class="p">;</span><span class="c1">//将两个相同单位的数进行相减</span>
+<span class="w">    </span><span class="c1">//此时我们将得到一个角为单位的数值</span>
+<span class="w">    </span><span class="c1">//我们可以把它化为几元几角的方式，这样更符合我们的认知</span>
+<span class="w">    </span><span class="c1">//这时我们将用到前面介绍的取余运算符，即“ % ” </span>
+<span class="w">    </span><span class="c1">//t/10-&gt;表示元单位</span>
+<span class="w">    </span><span class="c1">//t%10-&gt;表示角单位</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;应找零%d元%d角&quot;</span><span class="p">,</span><span class="n">t</span><span class="o">/</span><span class="mi">10</span><span class="p">,</span><span class="n">t</span><span class="o">%</span><span class="mi">10</span><span class="p">);</span><span class="c1">//输出结果</span>
+
+<span class="p">}</span>
+</code></pre></div>
+<p>聪明的同学当然会想到，如果钱不够怎么办
+当然我们可以用C语言的程序来判断，只不过这暂时不是现在学习的内容，等到第三章也就是下一章 分支程序设计 的时候将会解决这个问题
+现在我们先就假设现金数大于商品价格</p>
+<h3 id="_3">运算符优先级<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>在C语言的表达式中，运算符是有优先级的，它规定了在一个表达式中，各个运算符执行的先后次数</p>
+<p>我们可以用一个简单的求平均值的程序来引入</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(){</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">;</span>
+<span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d %d&quot;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">a</span><span class="p">,</span><span class="o">&amp;</span><span class="n">b</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">//这里定义了一个单精度浮点型变量c，用来存储计算后的数值</span>
+<span class="w">    </span><span class="c1">//为什么是浮点型而不是整型呢，由于我们是计算两个数的平均数，我们当然不能保证这两个数的平均数一定是整数</span>
+<span class="w">    </span><span class="c1">//同时 在C语言中，两个整型相运算，只会得到一个整型，并且计算机会自动向下取整 即8/3会等于2</span>
+<span class="w">    </span><span class="c1">//而整型与浮点型相运算会得到浮点型，这其实是C的 强制类型转换 至于它什么是，接下来的内容会讲到</span>
+
+<span class="w">    </span><span class="c1">//我们在计算a+b时，使用了()，我们在小学数学时就知道a+b是加法，它的优先级要比除法要低</span>
+<span class="w">    </span><span class="c1">//所以我们在计算时，为了满足我们的需求，我们会这样做</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2.0</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%f&quot;</span><span class="p">,</span><span class="n">c</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>下面是常用的运算的符优先级</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">优先级</th>
+<th style="text-align: center;">运算符</th>
+<th style="text-align: center;">意义</th>
+<th style="text-align: center;">举例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">+</td>
+<td style="text-align: center;">单目不变</td>
+<td style="text-align: center;">+b</td>
+</tr>
+<tr>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">单目取负</td>
+<td style="text-align: center;">-b</td>
+</tr>
+<tr>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">*</td>
+<td style="text-align: center;">乘</td>
+<td style="text-align: center;">a*b</td>
+</tr>
+<tr>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">/</td>
+<td style="text-align: center;">除</td>
+<td style="text-align: center;">a/b</td>
+</tr>
+<tr>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">%</td>
+<td style="text-align: center;">取余</td>
+<td style="text-align: center;">a%b</td>
+</tr>
+<tr>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">+</td>
+<td style="text-align: center;">加</td>
+<td style="text-align: center;">a+b</td>
+</tr>
+<tr>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">减</td>
+<td style="text-align: center;">a-b</td>
+</tr>
+<tr>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">=</td>
+<td style="text-align: center;">赋值</td>
+<td style="text-align: center;">a=b</td>
+</tr>
+</tbody>
+</table>
+<p>结合关系</p>
+<h3 id="_4">赋值运算符<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="c1">//把“ = ”左边的“ b + 3 ”的值赋给“ a ” a此时的值就是“ b + 3 ” 的值</span>
+<span class="n">a</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">8</span><span class="p">;</span><span class="c1">//+=是复合赋值 意为a = a + 8；</span>
+<span class="n">a</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+<span class="n">a</span><span class="w"> </span><span class="o">*=</span><span class="w"> </span><span class="n">c</span><span class="p">;</span>
+</code></pre></div>
+<p>上面程序中出现的+= -= *= 均为复合赋值运算符，是简单赋值表达式的缩略形式</p>
+<p>下面是常用的复合赋值运算符</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">复合赋值表达式</th>
+<th style="text-align: center;">等价的简单赋值表达式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">x*=y</td>
+<td style="text-align: center;">x=x*y</td>
+</tr>
+<tr>
+<td style="text-align: center;">x/=y</td>
+<td style="text-align: center;">x=x/y</td>
+</tr>
+<tr>
+<td style="text-align: center;">x+=y</td>
+<td style="text-align: center;">x=x+y</td>
+</tr>
+<tr>
+<td style="text-align: center;">x-=y</td>
+<td style="text-align: center;">x=x-y</td>
+</tr>
+</tbody>
+</table>
+<p><strong>注意</strong></p>
+<ol>
+<li>赋值运算左边一定是变量，右边可以是任何形式的表达式</li>
+<li>赋值运算的结果是把右边式子的值储存到变量里面</li>
+<li>整个式子的值计算变量中储存的值</li>
+</ol>
+<h3 id="_5">后缀表达式<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<ol>
+<li>函数调用 形如printf();其中函数名为操作数 函数后面的括号是运算符</li>
+</ol>
+<p>对于函数调用 这里不做太多介绍 后面单独学到函数章节的时候会讲到</p>
+<ol>
+<li>后置自增/自减</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="o">=</span><span class="mi">10</span><span class="p">;</span>
+<span class="n">a</span><span class="o">++</span><span class="p">;</span>
+<span class="c1">//此时a的值为11</span>
+<span class="c1">//表达式的值为10</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="o">=</span><span class="mi">10</span><span class="p">;</span>
+<span class="n">b</span><span class="o">--</span><span class="p">;</span>
+<span class="c1">//此时b的值为9</span>
+<span class="c1">//表达式的值为10</span>
+</code></pre></div>
+<p>后缀表达式a++和a=a+1的作用是一样的，a++也可以看作对a=a+1的缩略，a的值会加1
+后缀表达式a--和a=a-1的作用是一样的，a的值会减1</p>
+<p><strong>注意</strong>
+“ a++ ”/“ a-- ”这个表达式的值是a的值本身
+我们可以用一个简单的程序来展示一下</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(){</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">;</span>
+<span class="w">    </span><span class="n">x</span><span class="o">=</span><span class="n">a</span><span class="o">--</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">//此时 x的值为a执行 “a--” 之前的值也就是10 a的值为a-1也就是9</span>
+<span class="w">    </span><span class="n">y</span><span class="o">=</span><span class="n">a</span><span class="o">++</span><span class="err">；</span>
+<span class="w">    </span><span class="c1">//此时 y的值为a执行 “a++” 之前的值也就是9  a的值为10</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>聪明的同学一定会想到，既然有a++那就会有++a 我们当然可以将它叫做前置自增/自减 我们接下来就会讲到</p>
+<h3 id="_6">一元表达式<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<ol>
+<li>前置自增/自减</li>
+</ol>
+<p>前面讲到后置自增/自减 这两者可以放在一起来理解</p>
+<p>我们看下面的程序 简单来演示前置和后置</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="cpf">&lt;stddio.h&gt;</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(){</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="o">++</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">//按照后置自增 很容易可以知道 x=10 a=11</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">++</span><span class="n">b</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">//前置的作用也相似于后置 b的值也会+1 b=11</span>
+<span class="w">    </span><span class="c1">//不同的是 此时y的值将会是 b加1以后的值 也就是11</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>这样一来 前置/后置都可以很明白的理解了</p>
+<ol>
+<li>sizeof()运算</li>
+</ol>
+<p>sizeof()运算用于测定对象所占用字节数</p>
+<p>可以用以下程序来展示sizeof()函数的使用方法和作用</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(){</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">c</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">sizeof</span><span class="p">(</span><span class="n">a</span><span class="p">);</span><span class="c1">//a是整型变量 占用字节数为4 结果是4</span>
+<span class="w">    </span><span class="k">sizeof</span><span class="p">(</span><span class="n">b</span><span class="p">);</span><span class="c1">//b是float型变量 占用字节数为4 结果的4</span>
+<span class="w">    </span><span class="k">sizeof</span><span class="p">(</span><span class="n">c</span><span class="p">);</span><span class="c1">//c是char型变量 占用字节数为1 结果为1</span>
+<span class="w">    </span><span class="k">sizeof</span><span class="p">(</span><span class="mf">9.8</span><span class="p">);</span><span class="c1">//9.8是double型常量 占用字节数为8 结果为8</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>补充</strong>
+C语言程序中浮点型常量的默认类型就是double类型 也就是双精度浮点型</p>
+<h2 id="_7">副作用<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<p>借助下面的程序 简单介绍副作用的基本概念</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(){</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">//给出如下表达式</span>
+
+<span class="w">    </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="p">;</span><span class="c1">//并没有引起任何变量的值产生变化 则认为此表达式无副作用</span>
+<span class="w">    </span><span class="o">++</span><span class="n">a</span><span class="p">;</span><span class="c1">//引起了变量a的数值加了1 变量a的值发生了变化 则认为此表达式有副作用</span>
+<span class="w">    </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">c</span><span class="p">;</span><span class="c1">//引起变量啊的数值变为了 b * c 的值 变量a的值发生了变化 则认为此表达式有副作用</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>多数资料书和教材中对副作用了类型做了分类 感兴趣的同学可以查阅 这里不做赘述</p>
+<h2 id="_8">语句<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<p>语句就是程序中实现某种功能的指令，前面引用的所有程序，都是有一个个的语句组成</p>
+<p>这里我们主要简单介绍 <strong>表达式语句</strong> 和 <strong>复合语句</strong></p>
+<p><strong>分支语句</strong> <strong>循环语句</strong> 后面章节会详细介绍</p>
+<h3 id="_9">表达式语句<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<p>任意表达式末尾加上";"，就构成了表达式语句</p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">;</span>
+<span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="p">;</span>
+<span class="n">v</span><span class="p">;</span>
+<span class="p">;</span>
+</code></pre></div>
+<p>这些都是表达式语句，包括单独的";"</p>
+<h3 id="_10">复合语句<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<p>复合语句是由花括号=={}==括起来的语句，又叫语句块，由声明部分和语句部分组成</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(){</span>
+
+<span class="w">    </span><span class="c1">//这部分为声明区</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">c</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">n</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">//这部分为语句区</span>
+<span class="w">    </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">6</span><span class="p">;</span>
+<span class="w">    </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">&#39;v&#39;</span><span class="p">;</span>
+<span class="w">    </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">7.6</span><span class="p">;</span>
+
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="_11">部分库函数<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
+<p>我们在上一章讲到输入和输出的时候，用到了两个标准库函数printf() scanf()，像这样的库函数还有很多
+前面我们讲到了许多操作符，可以帮助我们解决一些简单的问题
+但是对于一些复杂的运算，想平方根，C中并没有内置运算符，但是提供了一些库函数帮助我们解决问题</p>
+<p>下面将简单介绍两种类型的库函数</p>
+<h3 id="_12">数学函数<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<p>C中提供了许多数学函数，这里选取几个常用到的库函数，函数原型多数包含在头文件math.h中，想要了解其他的库函数可以查阅资料</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="c1">//前面第一章讲到预处理命令，这里是预包含命令，我们使用某个库函数时，要加入包含该库函数的头文件</span>
+<span class="c1">//我们要使用到的abs/labs的函数原型包含在头文件stdlib.h中</span>
+<span class="c1">//fabs/pow/sqrt的函数原型包含在头文件math.h中</span>
+<span class="cp">#include</span><span class="cpf">&lt;stdlib.h&gt;</span>
+<span class="cp">#include</span><span class="cpf">&lt;math.h&gt;</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(){</span>
+
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">a1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">abs</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">//abs()是用来求int类型数据的绝对值的</span>
+
+<span class="w">    </span><span class="kt">long</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">-994722222</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">long</span><span class="w"> </span><span class="n">b1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">labs</span><span class="p">(</span><span class="n">b</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">//labs()是用来求long类型数据的绝对值的</span>
+
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">4.55</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">c1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fabs</span><span class="p">(</span><span class="n">c</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">//fabs()是用来求double类型数据的绝对值的</span>
+
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">4.0</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pow</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">//pow()函数的作用是返回x的y次幂的结果，pow()函数的参数和返回值(简单理解就是计算结果，后面会详细介绍)均为double类型</span>
+
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">4.0</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">q</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sqrt</span><span class="p">(</span><span class="n">p</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">//sqrt()函数的作用是计算参数的平方根，参数和返回值均为double类型</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>简单介绍<strong>函数原型</strong> <strong>返回值</strong> <strong>参数</strong>
+以pow()为例</p>
+<p>函数原型为</p>
+<p><strong>double pow (double x,double y)</strong></p>
+<p>使用pow()函数时要严格按照函数原型来使用，不然编译器将会报错</p>
+<p>前面的<strong>double</strong>为返回值类型，也就是执行函数得到的数值的类型
+里面的<strong>double x,double y</strong>为参数类型，我们可以看到，pow()函数需要两个参数，类型均为double类型</p>
+<h3 id="_13">标准库函数<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<p>在日常的应用中，可能会遇到需要用某个范围的随机数问题
+在C中有两个标准库函数<strong>srand</strong>和<strong>rand</strong>配合产生随机数，它们的原型声明包含在头文件stdlib.h中</p>
+<ol>
+<li>种子数函数srand()</li>
+</ol>
+<p>函数原型为 <strong>void srand(unsigned seed)</strong>
+根据前面提到对函数原型的介绍，srand()函数的返回值为void 也就是没有返回值，参数为一个unsigned类型的变量或常量</p>
+<p>它用来为rand()函数设置一个基数，这个基数是rand函数产生第一个随机数的基准，基数不同产生的随机数就不同</p>
+<div class="highlight"><pre><span></span><code><span class="n">srand</span><span class="p">(</span><span class="mi">111</span><span class="p">);</span>
+<span class="c1">//为随机数产生设置了一个基准111</span>
+<span class="n">srand</span><span class="p">(</span><span class="mi">888</span><span class="p">);</span>
+<span class="c1">//为随机数产生设置了一个基准888</span>
+</code></pre></div>
+<ol>
+<li>随机数函数rand()</li>
+</ol>
+<p>函数原型为 <strong>int rand(void)</strong></p>
+<p>返回值类型为int，执行函数后会返回一个int类型的数值，不需要参数
+<strong>注意</strong> 虽然rand函数不需要参数，但是使用时()不能省略</p>
+<p>它用来生成一个0-32767之间的随机整数</p>
+<p><strong>注意</strong></p>
+<ol>
+<li>调用一次rand函数就会产生一个随机数，需要几个随机数就调用几次rand函数</li>
+<li>连续产生多个随机数时，第一个随机数是以srand函数设置的基数为基准产生的，第二个随机数是以第一个随机数为基准产生的，以此类推</li>
+<li>若没有调用srand函数来设置基准，系统默认的基数为1</li>
+</ol>
+<p>srand函数和rand函数的使用</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="cp">#include</span><span class="cpf">&lt;stdlid.h&gt;</span>
+<span class="cp">#include</span><span class="cpf">&lt;time.h&gt;</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(){</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">rand1</span><span class="p">,</span><span class="n">rand2</span><span class="p">,</span><span class="n">rand3</span><span class="p">;</span><span class="c1">//定义三个变量存储接下来要产生的随机数</span>
+
+<span class="w">    </span><span class="n">srand</span><span class="p">(</span><span class="n">time</span><span class="p">(</span><span class="nb">NULL</span><span class="p">));</span>
+<span class="w">    </span><span class="c1">//前面我们讲到，第一次调用rand函数产生的随机数是以srand函数内的参数为基准产生的，后面调用rand时是以前面产生的随机数做基准</span>
+<span class="w">    </span><span class="c1">//为了保证我们每次使用时产生的随机数都不同，我们就得每次给srand设置不同的基准显然这将不那么便捷</span>
+<span class="w">    </span><span class="c1">//上面使用time函数是获取当前时刻计算机系统的时钟（单位是秒），每次都以当前时刻为基准，就可以解决每次都需要改变基准的问题</span>
+<span class="w">    </span><span class="c1">//NULL是C语言的一个系统常量，代表的值为0</span>
+<span class="w">    </span><span class="n">rand1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rand</span><span class="p">();</span><span class="c1">//以srand设置的基准产生第一个随机数</span>
+<span class="w">    </span><span class="n">rand2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rand</span><span class="p">();</span><span class="c1">//以上一个rand函数产生的随机数为基准产生第二个随机数</span>
+<span class="w">    </span><span class="n">rand3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rand</span><span class="p">();</span><span class="c1">//以上一个rand函数产生的随机数为基准产生第三个随机数</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>有时候，实际问题需要的随机数是有范围的
+例如要求产生10到20之间的随机数，这个问题不难解决</p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">rand1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rand</span><span class="p">()</span><span class="o">%</span><span class="p">(</span><span class="mi">20</span><span class="o">+</span><span class="mi">1-10</span><span class="p">)</span><span class="o">+</span><span class="mi">10</span><span class="p">;</span>
+<span class="c1">//%符号前面提到过，作用是取余数</span>
+<span class="c1">//简单的道理，一个数对n取余得到的数的范围将会是0--n-1，如果我们要求产生10--20之间的随机数</span>
+<span class="c1">//我们就可以先产生一个0--10之间的随机数，然后再加上10，就可以解决</span>
+</code></pre></div>
+<h2 id="_14">程序设计基础知识<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h2>
+<p>基本掌握了前面的知识之后，我们就可以用C来按照需要来编写一些简单的程序了</p>
+<p>对于这部分的内容，教材和一些资料书的内容较为冗杂，这里不做过多赘述，我将通过一个简单的程序设计实例来介绍</p>
+<p>问题描述：设置一个简单的C程序实现提示用户输入三个整型变量，并求出它们的平均值并输出</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(){</span>
+<span class="w">    </span><span class="c1">//在任何学科中，解决问题的第一步往往都是分析问题</span>
+<span class="w">    </span><span class="c1">//我们先简单剖析一下要求，提取出下面关键词“提示输入” “输入三个整型变量” “平均值” “输出”</span>
+<span class="w">    </span><span class="c1">//同时也可以知道题目中需要四个变量，分别是需要输入的三个整型变量，还有一个变量用来存储平均值</span>
+<span class="w">    </span><span class="c1">//在程序的开头我们就先把他们定义出来，这是较为推荐的一种做法</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">ave</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">//首先“提示输入”就是通过printf函数输出一行提示，提示用户输入数据的类型和数量</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;please enter three integral numbers:&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">//然后是使用scanf函数输入三个整型变量a，b，c</span>
+<span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d%d%d&quot;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">a</span><span class="p">,</span><span class="o">&amp;</span><span class="n">b</span><span class="p">,</span><span class="o">&amp;</span><span class="n">c</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">//然后是“计算平均值”</span>
+<span class="w">    </span><span class="c1">//用来存储平均值的变量ave也是需要提前定义的</span>
+<span class="w">    </span><span class="n">ave</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="o">+</span><span class="n">c</span><span class="p">)</span><span class="o">/</span><span class="mf">3.0</span><span class="p">;</span><span class="c1">//至于为什么是3.0，这个不做赘述，前面已经多次提到</span>
+<span class="w">    </span><span class="c1">//最后是“输出”</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%lf&quot;</span><span class="p">,</span><span class="n">d</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>当然，上面这个充满了注释的程序看起来有点让人眼花缭乱
+我们实际设计时，并不需要把这些思路之类的注释写在程序里面
+就像数学题的演草部分当然不会出现在答题卡上面</p>
+<p>写注释当然是一个好的程序设计习惯，注释的作用是帮助自己和程序的其他阅读者更加清楚的理解程序的步骤，同时防止一段时间之后自己看不懂自己的程序</p>
+<p>这里为了帮助大家更好的了解程序设计的思路方法，写了很多设计程序时的思路，看起来会有些复杂
+当然这些脑子里面思考的东西你们不需要也一定不会写在程序里面的</p>
+<h2 id="_15">三种基本结构<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h2>
+<p>这类概念性的问题本来是不介绍的，但是对于前面程序设计实例中对于变量定义位置的不唯一性，还是添加了本章节</p>
+<p>三大基本结构分别为 <strong>顺序结构</strong> <strong>分支结构</strong> <strong>循环结构</strong></p>
+<p>这里主要介绍<strong>顺序结构</strong> 后面两种结构都有单独的章节，这里就不做介绍</p>
+<p>顺序结构是C语言最基本的结构，基于这种结构的程序代码是按照自前向后的顺利来运行的，就是说程序的运行顺序是自上而下的
+对于前面部分程序设计实例中定义变量的问题来讲，我们在输入函数scanf中要用到三个变量a,b,c，所以这三个变量必须是已经定义好了的
+这样我们才能使用它，并向它存入数值
+否则，如若我们在使用a,b,c，之前没有定义它，换句话说，如果我们把a,b,c的定义放在输入函数scanf之后
+程序当然会出错，遵循顺序结构的程序，对于变量的用法，必须是先定义后使用</p>
+<p>但对于定义变量和提示输入的先后，从顺序结构上面并没有硬性要求，这个主要是个人书写习惯</p>
+<p>至此第二章表达式与程序设计基础结束。</p>
+<hr />
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../01basic/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 一、基础知识">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                一、基础知识
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../03decision/" class="md-footer__link md-footer__link--next" aria-label="下一页: 三、分支程序设计">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                三、分支程序设计
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "search.suggest", "search.highlight", "search.share", "announce.dismiss", "content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.tooltips", "navigation.footer", "navigation.indexes", "navigation.sections", "navigation.tabs", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.56ea9cef.min.js"></script>
+      
+        <script src="../../static/mfuns-player/standard-player.umd.js"></script>
+      
+    
+  </body>
+</html>
